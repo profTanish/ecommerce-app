@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply text-darkSlate;
-  }
+    html {
+        @apply text-darkSlate;
+    }
+}
+
+@layer components {
+    .heading-tertiary {
+        @apply text-2xl font-medium;
+    }
 }
