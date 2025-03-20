@@ -9,6 +9,7 @@ export default {
             colors: {
                 darkSlate: "#1a2e35",
                 lightGray: "#F2F2F2",
+                darkGray: "#CCCCCC",
             },
             maxWidth: {
                 container: "82.5rem",

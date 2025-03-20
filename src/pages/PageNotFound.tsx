@@ -1,11 +1,13 @@
 import Lottie from "lottie-react";
 
 import PageNotFoundLottie from "../lotties/PageNotFoundLottie.json";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const PageNotFound = () => {
     return (
         <div className="h-screen">
-            <div>HEADER</div>
+            <Header/>
             <div className="max-w-container mx-auto flex items-center justify-between p-5">
                 <div className="space-y-4">
                     <h1 className="text-9xl font-bold tracking-wider">OOPS</h1>
@@ -26,6 +28,7 @@ const PageNotFound = () => {
                     <Lottie animationData={PageNotFoundLottie} loop={true} />
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
