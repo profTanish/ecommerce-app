@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AppLayout from "./components/AppLayout";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
+import Homepage from "./pages/Homepage";
 
 const App = () => {
   return (
@@ -14,9 +15,12 @@ const App = () => {
               <AppLayout />
             </ProtectedRoute>
           }
-        />
+          >
+          <Route index element={<Navigate replace to="home" />} />
+          <Route path="home" element={<Homepage />} />
+        </Route>
 
-        <Route path="/login" element={<Login />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

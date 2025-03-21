@@ -8,9 +8,10 @@ export default {
         extend: {
             colors: {
                 darkSlate: "#1a2e35",
+                slateTeal: "#5B7F7C",
                 lightGray: "#F2F2F2",
                 darkGray: "#CCCCCC",
-                textGray: "#4D4D4D",
+                textGray: "#62717A",
             },
             maxWidth: {
                 container: "82.5rem",

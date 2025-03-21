@@ -10,6 +10,11 @@
 
 @layer components {
     .heading-tertiary {
-        @apply text-2xl font-medium;
+      @apply text-2xl font-medium;
+    }
+    
+    .image-mini {
+      @apply whitespace-nowrap w-[3.75rem] h-[3.75rem] rounded-lg bg-no-repeat bg-[50%_50%] bg-[length:3.75rem_3.75rem] relative -bottom-3.5 inline-block mx-4;
     }
 }
+
