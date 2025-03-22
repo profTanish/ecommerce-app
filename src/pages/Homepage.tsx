@@ -35,7 +35,7 @@ const Homepage = () => {
 
       <section className="text-center py-16">
         <h4 className="heading-quaternary ">Get Introduced</h4>
-        <div className="max-w-5xl mx-auto text-6xl font-thin leading-[80px]">
+        <div className="max-w-5xl mx-auto text-6xl font-thin leading-[80px] text-darkSlate">
           Shop confidently with
           <a className="bg-[url(/bike.jpg)] image-mini"></a>
           our online store, where we prioritize saving your time, easing{" "}

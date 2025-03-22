@@ -1,6 +1,7 @@
 import { HiArrowLongDown } from "react-icons/hi2";
 import Button from "../components/Button";
 import CtaSection from "../components/CtaSection";
+import CountUp from "react-countup";
 
 const About = () => {
     return (
@@ -25,9 +26,9 @@ const About = () => {
                 className="py-16 grid grid-cols-1 md:grid-cols-2 gap-16"
                 id="section-numbers"
             >
-                <div>
+                <div className="overflow-hidden rounded-lg">
                     <img
-                        className="rounded-lg w-full max-h-[600px] object-cover"
+                        className="w-full max-h-[600px] object-cover transition-all duration-500 hover:scale-110"
                         src="/team.jpg"
                         alt="Group of people"
                     />
@@ -55,22 +56,50 @@ const About = () => {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center py-8">
                         <div className="text-center">
-                            <h3 className="heading-tertiary font-bold">10000+</h3>
+                            <h3 className="heading-tertiary font-bold">
+                                <CountUp
+                                    end={10000}
+                                    suffix="+"
+                                    enableScrollSpy={true}
+                                    scrollSpyDelay={1000}
+                                />
+                            </h3>
                             <p>Satisfied Customers</p>
                         </div>
 
                         <div>
-                            <h3 className="heading-tertiary font-bold">98%</h3>
+                            <h3 className="heading-tertiary font-bold">
+                                <CountUp
+                                    end={98}
+                                    suffix="%"
+                                    enableScrollSpy={true}
+                                    scrollSpyDelay={1000}
+                                />
+                            </h3>
                             <p>Customer Satisfaction Rate</p>
                         </div>
 
                         <div>
-                            <h3 className="heading-tertiary font-bold">5 Years</h3>
+                            <h3 className="heading-tertiary font-bold">
+                                <CountUp
+                                    end={5}
+                                    suffix=" Years"
+                                    enableScrollSpy={true}
+                                    scrollSpyDelay={1000}
+                                />
+                            </h3>
                             <p>In Business</p>
                         </div>
 
                         <div>
-                            <h3 className="heading-tertiary font-bold">500,000+</h3>
+                            <h3 className="heading-tertiary font-bold">
+                                <CountUp
+                                    end={500000}
+                                    suffix="+"
+                                    enableScrollSpy={true}
+                                    scrollSpyDelay={1000}
+                                />
+                            </h3>
                             <p>Products Sold</p>
                         </div>
                     </div>
