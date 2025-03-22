@@ -4,25 +4,29 @@
 
 @layer base {
     html {
-        @apply text-darkSlate;
+        @apply text-textGray scroll-smooth;
     }
 }
 
 @layer components {
     .heading-primary {
-        @apply text-6xl font-black;
+        @apply text-6xl font-black text-darkSlate;
       }
     
       .heading-secondary {
-        @apply text-5xl font-bold;
+        @apply text-5xl font-bold text-darkSlate;
       }
  
     .heading-tertiary {
-      @apply text-2xl font-medium;
+      @apply text-2xl font-medium text-darkSlate;
     }
 
     .heading-quaternary {
-        @apply text-lg font-medium uppercase text-textGray;
+      @apply text-lg font-medium uppercase;
+    }
+  
+    .button-primary {
+      @apply rounded-full hover:before:bg-darkSlate relative overflow-hidden border border-darkSlate bg-white px-3 text-darkSlate shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-darkSlate before:transition-all before:duration-500 hover:text-white hover:shadow-darkSlate hover:before:left-0 hover:before:w-full;
       }   
     
     .image-mini {

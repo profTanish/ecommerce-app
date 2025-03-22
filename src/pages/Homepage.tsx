@@ -5,6 +5,7 @@ import {
 } from "react-icons/hi2";
 import Feature from "../components/Feature";
 import Button from "../components/Button";
+import CtaSection from "../components/CtaSection";
 
 const Homepage = () => {
   return (
@@ -15,7 +16,7 @@ const Homepage = () => {
             Bring your shopping to the next{" "}
             <span className="text-slateTeal">LEVEL.</span>
           </h1>
-          <p className="text-textGray max-w-[80%]">
+          <p className="max-w-[80%]">
             Lorem ipsum dolor sit amet consectetur. Non egestas id proin aliquam
             pellentesque congue. Vel consectetur turpis a aliquam. Nisi maecenas
             elementum interdum arcu nunc ullamcorper pharetra suspendisse.
@@ -33,7 +34,7 @@ const Homepage = () => {
       </section>
 
       <section className="text-center py-16">
-        <h4 className="heading-quaternary text-textGray">Get Introduced</h4>
+        <h4 className="heading-quaternary ">Get Introduced</h4>
         <div className="max-w-5xl mx-auto text-6xl font-thin leading-[80px]">
           Shop confidently with
           <a className="bg-[url(/bike.jpg)] image-mini"></a>
@@ -49,7 +50,7 @@ const Homepage = () => {
           <h2 className="heading-secondary text-darkSlate mb-6">
             Experience Unmatched Shopping Convenience
           </h2>
-          <p className="text-textGray mb-8 max-w-xl">
+          <p className="mb-8 max-w-xl">
             Discover a seamless shopping experience with our top-notch services
             and products. We are dedicated to bringing you the best value for
             your money, making shopping easier and more enjoyable.
@@ -66,7 +67,7 @@ const Homepage = () => {
               title="24/7 Support"
               description="Our support team is here to help you any time of the day."
             />
-            
+
             <Feature
               icon={HiOutlineArrowUturnLeft}
               title="Easy Returns"
@@ -83,25 +84,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      <section className="py-16">
-         <div className="flex justify-between items-center">
-           <div className="max-w-3xl space-y-5">
-             <h1 className="heading-secondary">
-               Ready to explore online world?
-             </h1>
-             <p className="text-textGray">
-               Discover the endless possibilities of online shopping with our
-               easy-to-use platform. From exclusive deals to a wide range of
-               products, we make your shopping experience effortless and
-               enjoyable. Start your journey with us and find everything you need
-               at your fingertips.
-             </p>
-           </div>
-           <Button>
-             <span className="relative z-10">Start Shopping</span>
-           </Button>
-         </div>
-       </section>
+      <CtaSection />
     </div>
   );
 };
