@@ -13,6 +13,10 @@
         @apply text-6xl font-black;
       }
     
+      .heading-secondary {
+        @apply text-5xl font-bold;
+      }
+ 
     .heading-tertiary {
       @apply text-2xl font-medium;
     }

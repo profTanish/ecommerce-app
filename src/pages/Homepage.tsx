@@ -4,6 +4,7 @@ import {
   HiOutlineTruck,
 } from "react-icons/hi2";
 import Feature from "../components/Feature";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -45,7 +46,7 @@ const Homepage = () => {
        <section className="flex items-center justify-between mx-auto py-16">
          <div className="w-1/2 pr-8">
          <h4 className="heading-quaternary mb-5">What We Offer</h4>
-         <h2 className="text-5xl font-bold text-darkSlate mb-6">
+         <h2 className="heading-secondary text-darkSlate mb-6">
              Experience Unmatched Shopping Convenience
            </h2>
            <p className="text-textGray mb-8 max-w-xl">
