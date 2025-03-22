@@ -7,11 +7,11 @@ import {
 const HeaderActions = () => {
     return (
         <div className="flex items-center gap-2.5">
-            <button className="text-center p-3 border border-darkGray rounded-full">
+            <button className="text-center p-3 border border-darkGray rounded-full transition-all duration-300 hover:bg-darkGray">
                 <HiOutlineMagnifyingGlass className="text-2xl" />
             </button>
 
-            <button className="text-center p-3 border border-darkGray rounded-full">
+            <button className="text-center p-3 border border-darkGray rounded-full transition-all duration-300 hover:bg-darkGray">
                 <HiOutlineShoppingCart className="text-2xl" />
             </button>
 

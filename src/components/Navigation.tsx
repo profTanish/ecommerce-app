@@ -2,15 +2,21 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
     return (
-        <ul className="flex items-center gap-8 font-medium">
+        <ul className="flex items-center gap-8 font-medium text-textGray">
             <li>
-                <NavLink to="/home">Home</NavLink>
+                <NavLink className="text-darkSlate hover:text-darkSlate" to="/home">
+                    Home
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/store">Store</NavLink>
+                <NavLink className="hover:text-darkSlate" to="/store">
+                    Store
+                </NavLink>
             </li>
             <li>
-                <NavLink to="/about">About</NavLink>
+                <NavLink className="hover:text-darkSlate" to="/about">
+                    About
+                </NavLink>
             </li>
         </ul>
     );
