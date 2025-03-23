@@ -5,7 +5,7 @@ import CountUp from "react-countup";
 
 const About = () => {
     return (
-        <div>
+        <div  className="max-w-container mx-auto">
             <section className="py-16 flex flex-col items-center gap-8">
                 <h1 className="heading-primary max-w-3xl text-center">
                     Start shopping from the best store on the web

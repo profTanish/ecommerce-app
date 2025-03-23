@@ -10,6 +10,7 @@ const AppLayout = () => {
         <div className="max-w-container mx-auto">
           <Outlet />
         </div>
+        <Outlet />
       </main>
       <Footer />
     </div>

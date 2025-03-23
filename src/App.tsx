@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
+import StorePage from "./pages/StorePage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           >
           <Route index element={<Navigate replace to="home" />} />
           <Route path="home" element={<Homepage />} />
+          <Route path="store" element={<StorePage />} />
           <Route path="about" element={<About />} />
         </Route>
 
