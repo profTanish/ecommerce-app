@@ -1,3 +1,5 @@
+import Product from "../components/Product";
+
 const StorePage = () => {
     return (
         <div>
@@ -11,7 +13,7 @@ const StorePage = () => {
                     Shoptidy
                 </h1>
             </div>
-            <div className="py-16 grid grid-cols-[2fr_4fr] max-w-container mx-auto">
+            <div className="py-16 grid grid-cols-[1fr_3fr] max-w-container mx-auto">
                 <div className="flex flex-col gap-8">
                     <div className="sort-container">
                         <h3 className="heading-tertiary mb-2.5">Sort By</h3>
@@ -54,7 +56,13 @@ const StorePage = () => {
                         <input type="range" min="0" max="99999" step="5" />
                     </div>
                 </div>
-                <div>Products</div>
+                <div className="grid grid-cols-4 gap-4">
+                    <Product />
+                    <Product />
+                    <Product />
+                    <Product />
+                    <Product />
+                </div>
             </div>
         </div>
     );
