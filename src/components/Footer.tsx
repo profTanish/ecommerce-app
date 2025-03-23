@@ -6,6 +6,11 @@ const Footer = () => {
     <footer className=" bg-darkSlate text-white">
       <div className="max-w-container mx-auto flex flex-wrap items-end justify-between px-5 py-16 xl:px-0">
         <div className="flex gap-16">
+        <div className="space-y-2.5">
+             <img src="logo-dark.svg" alt="dark logo" />
+             <p className="w-36 text-stone-400">All about online shopping</p>
+           </div>
+ 
           <div>
             <h3 className="heading-tertiary mb-2.5">Navigation</h3>
             <ul className="text-stone-400">
@@ -44,13 +49,13 @@ const Footer = () => {
           <p>Get In Touch</p>
           <div className="flex items-center gap-2.5 mt-2.5">
             <a href="https://www.linkedin.com/in/andrija-djordjevic-a7b794282/">
-              <FaLinkedin className="text-3xl" />
+              <FaLinkedin className="text-3xl hover:fill-none hover:stroke-[20]" />
             </a>
             <a href="https://github.com/andrijaweb">
-              <FaGithubSquare className="text-3xl" />
+              <FaGithubSquare className="text-3xl hover:fill-none hover:stroke-[20]" />
             </a>
             <a href="https://youtube.com">
-              <FaYoutubeSquare className="text-3xl" />
+              <FaYoutubeSquare className="text-3xl hover:fill-none hover:stroke-[20]" />
             </a>
           </div>
         </div>
