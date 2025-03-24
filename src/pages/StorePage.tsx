@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import CtaSection from "../components/CtaSection";
 import Product from "../components/Product";
+import { getProducts } from "../services/apiProducts";
 
 const StorePage = () => {
+    useEffect(() => {
+        getProducts().then((data) => console.log(data));
+      }, []);
+    
     return (
         <div>
             <div className="overflow-hidden relative h-[25rem]">
