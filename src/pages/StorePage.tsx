@@ -1,5 +1,5 @@
 import CtaSection from "../components/CtaSection";
-import Products from "../components/Products";
+import Products from "../features/products/Products";
 
 const StorePage = () => {
     return (

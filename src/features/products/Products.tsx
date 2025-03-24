@@ -1,17 +1,9 @@
 import Product from "./Product";
-import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../services/apiProducts";
-import Spinner from "./Spinner";
+import Spinner from "../../components/Spinner";
+import { useProducts } from "./useProducts";
 
 const Products = () => {
-    const {
-        isLoading,
-        data: products,
-        error,
-    } = useQuery({
-        queryKey: ["products"],
-        queryFn: getProducts,
-    });
+    const { isLoading, products } = useProducts();
 
     if (isLoading) return <Spinner />;
 
