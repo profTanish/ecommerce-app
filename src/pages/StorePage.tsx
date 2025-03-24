@@ -1,13 +1,7 @@
-import { useEffect } from "react";
 import CtaSection from "../components/CtaSection";
-import Product from "../components/Product";
-import { getProducts } from "../services/apiProducts";
+import Products from "../components/Products";
 
 const StorePage = () => {
-    useEffect(() => {
-        getProducts().then((data) => console.log(data));
-      }, []);
-    
     return (
         <div>
             <div className="overflow-hidden relative h-[25rem]">
@@ -66,21 +60,16 @@ const StorePage = () => {
                             <input type="range" min="0" max="99999" step="5" />
                         </div>
                     </div>
-                    <div className="grid grid-cols-4 gap-4">
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
-                    </div>
+
+                    <Products />
                 </div>
 
                 <section className="py-16 space-y-5">
                     <h2 className="heading-secondary">Related Products</h2>
                     <div className="grid grid-cols-3 gap-10">
+                        {/* <Product />
                         <Product />
-                        <Product />
-                        <Product />
+                        <Product /> */}
                     </div>
                 </section>
 
