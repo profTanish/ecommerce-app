@@ -1,5 +1,4 @@
 import CtaSection from "../components/CtaSection";
-import Pagination from "../components/Pagination";
 import Products from "../features/products/Products";
 
 const StorePage = () => {

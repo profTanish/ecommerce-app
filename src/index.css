@@ -30,7 +30,7 @@
   }
 
   .button-pagination {
-    @apply flex items-center justify-center gap-2 px-5 py-2 rounded-full text-darkSlate border border-transparent transition-all duration-300 hover:bg-slateTeal hover:border-slateTeal hover:text-white;
+    @apply flex items-center justify-center gap-2 px-5 py-2 rounded-full text-darkSlate border border-transparent transition-all duration-300 enabled:hover:border-slateTeal enabled:hover:bg-slateTeal enabled:hover:text-white disabled:opacity-60;
   }
 
   .image-mini {
