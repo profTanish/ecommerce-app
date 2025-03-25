@@ -3,10 +3,12 @@ import { Navigate, useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "../utils/constants";
 
 type PaginationType = {
-    count: number;
+    count: number | null;
 };
 
 const Pagination = ({ count }: PaginationType) => {
+    if (!count) return;
+    
     const [searchParams, setSearchParams] = useSearchParams();
     const curPage = !searchParams.get("page")
         ? 1

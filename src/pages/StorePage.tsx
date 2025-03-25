@@ -64,7 +64,6 @@ const StorePage = () => {
 
                     <div>
                         <Products />
-                        <Pagination count={30} />
                     </div>
                 </div>
 
