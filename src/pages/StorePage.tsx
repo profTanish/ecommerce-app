@@ -1,4 +1,5 @@
 import CtaSection from "../components/CtaSection";
+import Pagination from "../components/Pagination";
 import Products from "../features/products/Products";
 
 const StorePage = () => {
@@ -61,7 +62,10 @@ const StorePage = () => {
                         </div>
                     </div>
 
-                    <Products />
+                    <div>
+                        <Products />
+                        <Pagination count={30} />
+                    </div>
                 </div>
 
                 <section className="py-16 space-y-5">
