@@ -1,4 +1,6 @@
- type ProductType = {
+import { capitalizeFirstLetter } from "../../utils/helpers";
+
+type ProductType = {
    product: product;
  };
  
@@ -12,7 +14,7 @@ return (
         <div className="rounded-lg overflow-hidden relative">
           <img src={images?.at(0)} alt="product" />
           <p className="text-xs py-[2px] px-2 absolute top-1 right-1 bg-white text-darkSlate rounded-full">
-          {category}
+          {capitalizeFirstLetter(category)}
           </p>
         </div>
         <div className="space-y-2.5 mt-2.5">
