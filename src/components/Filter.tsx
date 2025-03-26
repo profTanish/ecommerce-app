@@ -1,10 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 
-type Option = {
-    value: string;
-    label: string;
-};
-
 type FilterProps = {
     filterField: string;
     options: Option[];
