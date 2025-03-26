@@ -19,9 +19,14 @@ export function useProducts() {
       ? null
       : { fieldName: "category", value: filteredValue };
 
+  // Sort by
+  const sortByRaw = searchParams.get("sortBy") || "name-asc";
+  const [field, direction] = sortByRaw.split("-");
+  const sortBy = { field, direction };
+
   const { isLoading, data } = useQuery<QueryData>({
-    queryKey: ["products", page, filter],
-    queryFn: () => getProducts({ page, filter }),
+    queryKey: ["products", page, filter, sortBy],
+    queryFn: () => getProducts({ page, filter, sortBy }),
   });
 
   const products = data?.data ?? null;

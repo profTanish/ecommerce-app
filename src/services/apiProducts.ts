@@ -7,9 +7,13 @@ type getProductsProps = {
     fieldName: string;
     value: string;
   } | null;
+  sortBy: {
+    field: string;
+    direction: string;
+  } | null;
 };
 
-export async function getProducts({ page, filter }: getProductsProps) {
+export async function getProducts({ page, filter, sortBy }: getProductsProps) {
   let query = supabase.from("products").select("*", { count: "exact" });
 
   if (page) {
@@ -20,7 +24,13 @@ export async function getProducts({ page, filter }: getProductsProps) {
   }
 
   // Filter
-  if (filter !== null) query = query.eq(filter.fieldName, filter.value);
+  if (filter) query = query.eq(filter.fieldName, filter.value);
+
+  // Sort
+  if (sortBy)
+    query = query.order(sortBy.field, {
+      ascending: sortBy.direction === "asc",
+    });
 
   const { data, error, count } = await query;
 

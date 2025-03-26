@@ -37,8 +37,8 @@ const StorePage = () => {
                                 options={[
                                     { value: "name-asc", label: "Name Ascending A-Z" },
                                     { value: "name-desc", label: "Name Descending Z-A" },
-                                    { value: "price-asc", label: "Price High - Low" },
-                                    { value: "price-desc", label: "Price Low - High" },
+                                    { value: "price-asc", label: "Price Low - High" },
+                                    { value: "price-desc", label: "Price High - Low" },
                                 ]}
                             />
                         </div>
