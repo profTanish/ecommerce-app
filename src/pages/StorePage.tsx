@@ -1,4 +1,5 @@
 import CtaSection from "../components/CtaSection";
+import Filter from "../components/Filter";
 import Spinner from "../components/Spinner";
 import Product from "../features/products/Product";
 import Products from "../features/products/Products";
@@ -43,26 +44,18 @@ const StorePage = () => {
 
                         <div>
                             <h3 className="heading-tertiary mb-2.5">Category</h3>
-                            <ul className="flex flex-col gap-2.5 items-start">
-                                {[
-                                    "all",
-                                    "clothes",
-                                    "electronics",
-                                    "furniture",
-                                    "shoes",
-                                    "miscellaneous",
-                                    "others",
-                                ].map((category) => (
-                                    <li key={category}>
-                                        <button
-                                            className="category-button hover:text-darkSlate"
-                                            value={category}
-                                        >
-                                            {category.charAt(0).toUpperCase() + category.slice(1)}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
+                            <Filter
+                                filterField="category"
+                                options={[
+                                    { value: "all", label: "All" },
+                                    { value: "clothes", label: "Clothes" },
+                                    { value: "outdoor-and-sports", label: "Outdoor & Sports" },
+                                    { value: "furniture", label: "Furniture" },
+                                    { value: "gaming", label: "Gaming" },
+                                    { value: "shoes", label: "Shoes" },
+                                    { value: "accessories", label: "Accessories" },
+                                ]}
+                            />
                         </div>
 
                         <div>
