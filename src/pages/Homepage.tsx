@@ -10,7 +10,7 @@ import CtaSection from "../components/CtaSection";
 const Homepage = () => {
   return (
     <div className="max-w-container mx-auto">
-      <section className="flex items-center justify-between gap-16 pb-16">
+      <section className="grid md:grid-cols-2 items-center justify-between gap-16 pb-16">
         <div className="max-w-screen-sm space-y-5">
           <h1 className="heading-primary">
             Bring your shopping to the next{" "}
