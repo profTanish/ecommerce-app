@@ -5,14 +5,14 @@
  const Product = ({ product }: ProductType) => {
    if (!product) return;
  
-   const { name, images, categories, price } = product;
+   const { name, images, category, price } = product;
  
 return (
       <div>
         <div className="rounded-lg overflow-hidden relative">
           <img src={images?.at(0)} alt="product" />
           <p className="text-xs py-[2px] px-2 absolute top-1 right-1 bg-white text-darkSlate rounded-full">
-          {categories?.join(", ")}
+          {category}
           </p>
         </div>
         <div className="space-y-2.5 mt-2.5">

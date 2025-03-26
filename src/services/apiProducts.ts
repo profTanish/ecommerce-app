@@ -1,7 +1,15 @@
 import { PAGE_SIZE } from "../utils/constants";
 import supabase from "./supabase";
 
-export async function getProducts({ page }: { page: number }) {
+type getProductsProps = {
+  page: number;
+  filter: {
+    fieldName: string;
+    value: string;
+  } | null;
+};
+
+export async function getProducts({ page, filter }: getProductsProps) {
   let query = supabase.from("products").select("*", { count: "exact" });
 
   if (page) {
@@ -10,6 +18,9 @@ export async function getProducts({ page }: { page: number }) {
 
     query = query.range(from, to);
   }
+
+  // Filter
+  if (filter !== null) query = query.eq(filter.fieldName, filter.value);
 
   const { data, error, count } = await query;
 
