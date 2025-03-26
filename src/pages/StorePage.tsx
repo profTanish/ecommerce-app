@@ -1,5 +1,6 @@
 import CtaSection from "../components/CtaSection";
 import Filter from "../components/Filter";
+import SortBy from "../components/SortBy";
 import Spinner from "../components/Spinner";
 import Product from "../features/products/Product";
 import Products from "../features/products/Products";
@@ -32,14 +33,14 @@ const StorePage = () => {
                     <div className="flex flex-col gap-8">
                         <div className="sort-container">
                             <h3 className="heading-tertiary mb-2.5">Sort By</h3>
-                            <select className="py-2 px-4 rounded-md w-56 bg-transparent border border-darkGray cursor-pointer text-sm">
-                                <option className="" value="name-asc">
-                                    Name Ascending A-Z
-                                </option>
-                                <option value="name-desc">Name Descending Z-A</option>
-                                <option value="price-desc">Price High - Low</option>
-                                <option value="price-asc">Price Low - High</option>
-                            </select>
+                            <SortBy
+                                options={[
+                                    { value: "name-asc", label: "Name Ascending A-Z" },
+                                    { value: "name-desc", label: "Name Descending Z-A" },
+                                    { value: "price-asc", label: "Price High - Low" },
+                                    { value: "price-desc", label: "Price Low - High" },
+                                ]}
+                            />
                         </div>
 
                         <div>
