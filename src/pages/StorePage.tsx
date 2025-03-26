@@ -1,20 +1,10 @@
 import CtaSection from "../components/CtaSection";
 import Filter from "../components/Filter";
 import SortBy from "../components/SortBy";
-import Spinner from "../components/Spinner";
-import Product from "../features/products/Product";
+import RecommendedProducts from "../features/RecommendedProducts";
 import Products from "../features/products/Products";
-import { useProducts } from "../features/products/useProducts";
 
 const StorePage = () => {
-    const { isLoading, products } = useProducts();
-    const recommendedProducts = products?.filter(
-        (product) =>
-            product.name === "Electric Bike" ||
-            product.name === "KEMO Controller" ||
-            product.name === "Black Hoodie"
-    );
-
     return (
         <div>
             <div className="overflow-hidden relative h-[25rem]">
@@ -73,15 +63,7 @@ const StorePage = () => {
 
                 <section className="py-16 space-y-5">
                     <h2 className="heading-secondary">Explore Our Recommendations</h2>
-                    <div className="grid grid-cols-3 gap-10">
-                        {/* <Product />
-                        <Product />
-                        <Product /> */}
-                        {isLoading && <Spinner />}
-                        {recommendedProducts?.map((product) => (
-                            <Product key={product.id} product={product} />
-                        ))}
-                    </div>
+                    <RecommendedProducts />
                 </section>
 
                 <CtaSection />

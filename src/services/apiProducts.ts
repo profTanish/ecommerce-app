@@ -41,3 +41,17 @@ export async function getProducts({ page, filter, sortBy }: getProductsProps) {
 
   return { data, count };
 }
+
+export async function getRecommendedProducts() {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .range(0, 2);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Recommended products could not be loaded.");
+  }
+
+  return { data, error };
+}
