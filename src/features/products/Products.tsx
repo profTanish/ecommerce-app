@@ -8,6 +8,9 @@ const Products = () => {
 
     if (isLoading) return <Spinner />;
 
+    if (!products?.length)
+        return <p className="text-darkSlate">No products could be found.</p>;
+
     return (
         <>
             <div className="grid grid-cols-4 gap-4">
