@@ -1,7 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AppLayout from "./components/AppLayout";
-import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
@@ -10,7 +9,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import AuthLayout from "./features/authentication/AuthLayout";
-import Signup from "./pages/Signup";
+import SignupForm from "./features/authentication/forms/SignupForm.tsx";
+import LoginForm from "./features/authentication/forms/LoginForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -41,10 +41,9 @@ const App = () => {
           </Route>
 
           <Route element={<AuthLayout />}>
-             <Route path="login" element={<Login />} />
-             <Route path="signup" element={<Signup />} />
-           </Route>
-          <Route path="login" element={<Login />} />
+            <Route path="login" element={<LoginForm />} />
+            <Route path="signup" element={<SignupForm />} />
+          </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
