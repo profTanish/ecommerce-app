@@ -1,12 +1,13 @@
 import Product from "./Product";
-import Spinner from "../../components/Spinner";
 import { useProducts } from "./useProducts";
 import Pagination from "../../components/Pagination";
+import SkeletonProducts from "@/components/SkeletonProducts";
 
 const Products = () => {
     const { isLoading, products, count } = useProducts();
 
-    if (isLoading) return <Spinner />;
+    // if (isLoading) return <Spinner />;
+    if (isLoading) return <SkeletonProducts count={8} />;
 
     if (!products?.length)
         return <p className="text-darkSlate">No products could be found.</p>;

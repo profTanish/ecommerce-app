@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../../utils/helpers";
+import { capitalizeFirstLetter } from "../../lib/helpers";
 
 type ProductType = {
    product: product;

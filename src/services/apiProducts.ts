@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "../utils/constants";
+import { PAGE_SIZE } from "../lib/constants";
 import supabase from "./supabase";
 
 type getProductsProps = {

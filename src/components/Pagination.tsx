@@ -1,6 +1,6 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { Navigate, useSearchParams } from "react-router-dom";
-import { PAGE_SIZE } from "../utils/constants";
+import { PAGE_SIZE } from "../lib/constants";
 
 type PaginationType = {
     count: number | null;
