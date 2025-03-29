@@ -63,7 +63,7 @@ const App = () => {
             fontSize: "16px",
             maxWidth: "500px",
             padding: "16px 24px",
-            backgroundColor: "#F2F2F2",
+            backgroundColor: "#fff",
           },
         }}
       />

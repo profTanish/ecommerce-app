@@ -13,16 +13,14 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-    loginValidation,
-    signupValidation,
-} from "@/features/authentication/validation";
+import { signupValidation } from "@/features/authentication/validation";
 
 import { Link } from "react-router-dom";
 import Spinner from "../../../components/Spinner";
+import { useSignup } from "../useSignup";
 
 const SignupForm = () => {
-    const isPending = false;
+    const { signup, isPending } = useSignup()
 
     const form = useForm<z.infer<typeof signupValidation>>({
         resolver: zodResolver(signupValidation),
@@ -34,10 +32,14 @@ const SignupForm = () => {
     });
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof loginValidation>) {
+    function onSubmit(values: z.infer<typeof signupValidation>) {
         console.log(values);
 
         if (!values) return;
+
+        const { name, email, password } = values;
+
+        signup({ name, email, password });
     }
 
     return (
@@ -52,9 +54,15 @@ const SignupForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="shad-form_label">Username</FormLabel>
+                                <FormLabel className="shad-form_label">Name</FormLabel>
                                 <FormControl>
-                                    <Input type="text" className="shad-input" {...field} />
+                                    <Input
+                                        type="text"
+                                        placeholder="Andrija Djordjevic"
+                                        disabled={isPending}
+                                        className="shad-input"
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -68,7 +76,13 @@ const SignupForm = () => {
                             <FormItem>
                                 <FormLabel className="shad-form_label">Email</FormLabel>
                                 <FormControl>
-                                    <Input type="text" className="shad-input" {...field} />
+                                    <Input
+                                        type="text"
+                                        placeholder="andrija@office.com"
+                                        disabled={isPending}
+                                        className="shad-input"
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -82,7 +96,12 @@ const SignupForm = () => {
                             <FormItem>
                                 <FormLabel className="shad-form_label">Password</FormLabel>
                                 <FormControl>
-                                    <Input type="password" className="shad-input" {...field} />
+                                    <Input
+                                        type="password"
+                                        disabled={isPending}
+                                        className="shad-input"
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -90,7 +109,7 @@ const SignupForm = () => {
                     />
 
                     <Button type="submit" disabled={isPending} className="w-full">
-                        {!isPending ? "Log in" : <Spinner />}
+                        {!isPending ? "Sign up" : <Spinner />}
                     </Button>
 
                     <p className="text-textGray text-center">
