@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import AuthLayout from "./features/authentication/AuthLayout";
 import SignupForm from "./features/authentication/forms/SignupForm.tsx";
 import LoginForm from "./features/authentication/forms/LoginForm";
+import ProductDetails from "./pages/ProductDetails.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +38,7 @@ const App = () => {
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Homepage />} />
             <Route path="store" element={<StorePage />} />
+            <Route path="store/:category/:id" element={<ProductDetails />} />
             <Route path="about" element={<About />} />
           </Route>
 

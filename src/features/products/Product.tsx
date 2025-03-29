@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../lib/helpers";
 
 type ProductType = {
@@ -7,12 +8,12 @@ type ProductType = {
  const Product = ({ product }: ProductType) => {
    if (!product) return;
  
-   const { name, images, category, price } = product;
+   const { id, name, images, category, price } = product;
  
 return (
-      <div>
+      <Link to={`${category}/${id}`}>
         <div className="rounded-lg overflow-hidden relative">
-          <img src={images?.at(0)} alt="product" />
+          <img src={images?.at(0)} alt="product" loading="lazy"/>
           <p className="text-xs py-[2px] px-2 absolute top-1 right-1 bg-white text-darkSlate rounded-full">
           {capitalizeFirstLetter(category)}
           </p>
@@ -30,7 +31,7 @@ return (
             </button>
           </div>
         </div>
-      </div>
+      </Link>
     );
   };
   
