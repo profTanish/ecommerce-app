@@ -2,7 +2,7 @@ import Broadcrumb from "../../components/Breadcrumb";
 import { useProduct } from "./useProduct";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import ProductCarousel from "@/components/ProductCarousel";
-import { useRecommendedProducts } from "./useRecommendedProducts";
+import { useRelatedProducts } from "./useRelatedProducts";
 
 const ProductDetails = () => {
     const { isLoading, product } = useProduct();
@@ -11,6 +11,8 @@ const ProductDetails = () => {
 
     if (!product) return null;
 
+    const { relatedProducts } = useRelatedProducts(category);
+ 
     const { images, description, category, name, price, sku } = product;
 
     return (
@@ -56,10 +58,10 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
-            {recommendedProducts && (
+            {relatedProducts && (
                 <div className="py-16">
                     <h2 className="heading-secondary mb-5">Related Products</h2>
-                    <ProductCarousel products={recommendedProducts} />
+                    <ProductCarousel products={relatedProducts} />
                 </div>
             )}
         </div>

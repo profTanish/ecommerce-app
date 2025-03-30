@@ -10,7 +10,7 @@ export function useProduct() {
         data: product,
         error,
     } = useQuery({
-        queryKey: ["booking", productId],
+        queryKey: ["product", productId],
         queryFn: () => getProductById(productId),
         retry: false,
     });
