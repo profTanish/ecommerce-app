@@ -42,6 +42,20 @@ export async function getProducts({ page, filter, sortBy }: getProductsProps) {
   return { data, count };
 }
 
+export async function getProductById(id: number) {
+  let { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Product not found");
+  }
+
+  return data;
+}
+
 export async function getRecommendedProducts() {
   const { data, error } = await supabase
     .from("products")

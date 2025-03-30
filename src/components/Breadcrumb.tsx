@@ -28,7 +28,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
                     const isLastItem = items.length === i + 1;
 
                     return (
-                        <React.Fragment key={item?.link}>
+                        <React.Fragment key={item?.name}>
                             <BreadcrumbItem>
                                 {!isLastItem ? (
                                     <BreadcrumbLink asChild>
