@@ -22,7 +22,7 @@ return (
           <h5 className="font-medium text-darkSlate">{name}</h5>
           <p className="font-bold text-darkSlate text-2xl">${price}</p>
           <div className="flex gap-2.5">
-            <button className="text-sm py-2 text-darkSlate bg-lightGray rounded-full w-full transition-all duration-300 hover:bg-darkGray">
+            <button className="text-sm py-3 text-darkSlate bg-lightGray rounded-full w-full transition-all duration-300 hover:bg-darkGray">
               Add to Cart
             </button>
   

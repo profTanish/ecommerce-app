@@ -38,7 +38,10 @@ const App = () => {
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Homepage />} />
             <Route path="store" element={<StorePage />} />
-            <Route path="store/:category/:id" element={<ProductDetails />} />
+            <Route
+               path="store/:category/:productId"
+               element={<ProductDetails />}
+             />
             <Route path="about" element={<About />} />
           </Route>
 
