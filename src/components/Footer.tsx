@@ -1,5 +1,6 @@
 import { FaGithubSquare, FaLinkedin, FaYoutubeSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="max-w-container mx-auto flex flex-wrap items-end justify-between px-5 py-16 xl:px-0">
         <div className="flex gap-16">
         <div className="space-y-2.5">
-             <img src="logo-dark.svg" alt="dark logo" />
+             <Logo isDark={true} />
              <p className="w-36 text-stone-400">All about online shopping</p>
            </div>
  
