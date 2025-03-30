@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 import AuthLayout from "./features/authentication/AuthLayout";
 import SignupForm from "./features/authentication/forms/SignupForm.tsx";
 import LoginForm from "./features/authentication/forms/LoginForm";
-import ProductDetails from "./pages/ProductDetails.tsx";
+import ProductDetails from "./features/products/ProductDetails.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {

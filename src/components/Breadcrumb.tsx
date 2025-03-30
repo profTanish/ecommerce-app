@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 type BreadcrumbItem = {
     name: string;
-    link: string;
+    link?: string;
 };
 
 type BreadcrumbProps = {
@@ -32,7 +32,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
                             <BreadcrumbItem>
                                 {!isLastItem ? (
                                     <BreadcrumbLink asChild>
-                                        <Link to={item?.link}>{item.name}</Link>
+                                        <Link to={item?.link || ""}>{item.name}</Link>
                                     </BreadcrumbLink>
                                 ) : (
                                     <BreadcrumbPage>{item.name}</BreadcrumbPage>

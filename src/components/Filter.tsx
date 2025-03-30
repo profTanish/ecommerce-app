@@ -20,8 +20,8 @@ const Filter = ({ filterField, options }: FilterProps) => {
         <div className="flex flex-col gap-2.5 items-start">
             {options.map((option) => (
                 <button
-                    className={`category-button hover:text-darkSlate ${option.value === curFilter ? "text-darkSlate font-bold" : ""
-                        }"`}
+                    className={`hover:text-darkSlate ${option.value === curFilter ? "text-darkSlate" : "text-textGray"
+                        }`}
                     key={option.value}
                     onClick={() => handleClick(option.value)}
                     disabled={option.value === curFilter}

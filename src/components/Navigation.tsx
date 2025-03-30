@@ -4,17 +4,17 @@ const Navigation = () => {
     return (
         <ul className="flex items-center gap-8 font-medium text-textGray">
             <li>
-                <NavLink className="text-darkSlate hover:text-darkSlate" to="/home">
+                <NavLink className="hover:text-darkSlate nav-link" to="/home">
                     Home
                 </NavLink>
             </li>
             <li>
-                <NavLink className="hover:text-darkSlate" to="/store">
+                <NavLink className="hover:text-darkSlate nav-link" to="/store">
                     Store
                 </NavLink>
             </li>
             <li>
-                <NavLink className="hover:text-darkSlate" to="/about">
+                <NavLink className="hover:text-darkSlate nav-link" to="/about">
                     About
                 </NavLink>
             </li>
