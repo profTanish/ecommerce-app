@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 type LogoProps = {
-    isDark: boolean;
+    isDark?: boolean;
 };
 
 const Logo = ({ isDark = false }: LogoProps) => {

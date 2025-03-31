@@ -12,6 +12,7 @@ import AuthLayout from "./features/authentication/AuthLayout";
 import SignupForm from "./features/authentication/forms/SignupForm.tsx";
 import LoginForm from "./features/authentication/forms/LoginForm";
 import ProductDetails from "./features/products/ProductDetails.tsx";
+import Cart from "./features/cart/Cart.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +44,7 @@ const App = () => {
                element={<ProductDetails />}
              />
             <Route path="about" element={<About />} />
+            <Route path="cart" element={<Cart />} />
           </Route>
 
           <Route element={<AuthLayout />}>
