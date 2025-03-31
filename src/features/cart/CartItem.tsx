@@ -2,7 +2,7 @@ import { HiMinus, HiOutlineTrash, HiPlus } from "react-icons/hi2";
 
 const CartItem = () => {
     return (
-        <li className="flex gap-16 items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray">
+        <li className="flex gap-16 items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray pr-5">
             <div className="flex gap-5">
                 <div className="max-w-[7.5rem] rounded-md overflow-hidden">
                     <img className="w-full h-full" src="bike.jpg" alt="electric bike" />

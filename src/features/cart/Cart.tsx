@@ -21,7 +21,13 @@ const Cart = () => {
 
                 <h2 className="heading-tertiary mt-5 mb-8">Shopping Cart</h2>
 
-                <ul>
+                <ul className="max-h-96 overflow-scroll">
+                    <CartItem />
+                    <CartItem />
+                    <CartItem />
+                    <CartItem />
+                    <CartItem />
+                    <CartItem />
                     <CartItem />
                 </ul>
             </div>
