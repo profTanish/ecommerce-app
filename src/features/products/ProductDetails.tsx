@@ -6,13 +6,12 @@ import { useRelatedProducts } from "./useRelatedProducts";
 
 const ProductDetails = () => {
     const { isLoading, product } = useProduct();
-    console.log(isLoading, product);
-    const { recommendedProducts } = useRecommendedProducts();
+    const { relatedProducts } = useRelatedProducts(
+        product ? product.category : null
+    );
 
     if (!product) return null;
 
-    const { relatedProducts } = useRelatedProducts(category);
- 
     const { images, description, category, name, price, sku } = product;
 
     return (

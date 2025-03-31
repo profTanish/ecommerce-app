@@ -1,4 +1,3 @@
-import CtaSection from "../components/CtaSection";
 import Filter from "../components/Filter";
 import SortBy from "../components/SortBy";
 import RecommendedProducts from "../features/RecommendedProducts";
@@ -66,8 +65,6 @@ const StorePage = () => {
                     <h2 className="heading-secondary">Explore Our Recommendations</h2>
                     <RecommendedProducts />
                 </section>
-
-                <CtaSection />
             </div>
         </div>
     );
