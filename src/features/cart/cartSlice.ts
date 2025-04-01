@@ -1,3 +1,4 @@
+import { RootState } from "@/store";
 import { createSlice } from "@reduxjs/toolkit";
 
 type CartState = {
@@ -13,20 +14,7 @@ type CartState = {
 };
 
 const initialState: CartState = {
-    //   cart: [],
-
-    cart: [
-        {
-            productId: 12,
-            name: "Black T-Shirt",
-            category: "Clothes",
-            price: 44.29,
-            image:
-                "https://akyztpchcdqpamqgattl.supabase.co/storage/v1/object/public/product-images/black-tshirt.jpeg",
-            totalPrice: 44.29,
-            quantity: 1,
-        },
-    ],
+    cart: [],
 };
 
 const cartSlice = createSlice({
@@ -74,3 +62,6 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+export const getTotalCartPrice = (state: RootState) =>
+    state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
