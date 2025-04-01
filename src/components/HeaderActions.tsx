@@ -3,13 +3,17 @@ import {
     HiOutlineShoppingCart,
     HiOutlineUser,
 } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 const HeaderActions = () => {
     return (
         <div className="flex items-center gap-2.5">
-            <button className="text-center p-3 border border-darkGray rounded-full transition-all duration-300 hover:bg-darkGray">
+            <Link
+                to="/cart"
+                className="text-center p-3 border border-darkGray rounded-full transition-all duration-300 hover:bg-darkGray"
+            >
                 <HiOutlineMagnifyingGlass className="text-2xl" />
-            </button>
+            </Link>
 
             <button className="text-center p-3 border border-darkGray rounded-full transition-all duration-300 hover:bg-darkGray">
                 <HiOutlineShoppingCart className="text-2xl" />
