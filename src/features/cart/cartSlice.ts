@@ -8,6 +8,7 @@ type CartState = {
         price: number;
         image: string;
         totalPrice: number;
+        quantity: number;
     }[];
 };
 
@@ -23,6 +24,7 @@ const initialState: CartState = {
             image:
                 "https://akyztpchcdqpamqgattl.supabase.co/storage/v1/object/public/product-images/black-tshirt.jpeg",
             totalPrice: 44.29,
+            quantity: 1,
         },
     ],
 };
@@ -34,9 +36,41 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             state.cart.push(action.payload);
         },
-        deleteFromCart: (state, action) => { },
-        increaseQty: (state, action) => { },
-        decreaseQty: (state, action) => { },
-        clearCart: (state, action) => { },
+        deleteFromCart: (state, action) => {
+            state.cart = state.cart.filter(
+                (product) => product.productId !== action.payload
+            );
+        },
+        increaseQty: (state, action) => {
+            const product = state.cart.find(
+                (product) => product.productId === action.payload
+            );
+            if (!product) return;
+
+            product.quantity++;
+            product.totalPrice = product.price * product.quantity;
+        },
+        decreaseQty: (state, action) => {
+            const product = state.cart.find(
+                (product) => product.productId === action.payload
+            );
+            if (!product) return;
+
+            product.quantity--;
+            product.totalPrice = product.price * product.quantity;
+        },
+        clearCart: (state) => {
+            state.cart = [];
+        },
     },
 });
+
+export const {
+    addToCart,
+    deleteFromCart,
+    increaseQty,
+    decreaseQty,
+    clearCart,
+} = cartSlice.actions;
+
+export default cartSlice.reducer;
