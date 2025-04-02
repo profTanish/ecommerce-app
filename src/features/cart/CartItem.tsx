@@ -1,5 +1,6 @@
 import { capitalizeFirstLetter } from "@/lib/helpers";
-import { HiMinus, HiOutlineTrash, HiPlus } from "react-icons/hi2";
+import { HiMinus, HiPlus } from "react-icons/hi2";
+import DeleteCartItem from "./DeleteCartItem";
 
 type CartItemProps = {
     item: {
@@ -14,7 +15,7 @@ type CartItemProps = {
 };
 
 const CartItem = ({ item }: CartItemProps) => {
-    const { name, category, price, image, quantity } = item;
+    const { productId, name, category, price, image, quantity } = item;
 
     return (
         <li className="flex gap-16 justify-between items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray pr-5">
@@ -45,9 +46,7 @@ const CartItem = ({ item }: CartItemProps) => {
 
             <p className="text-2xl font-bold">${price}</p>
 
-            <button className="text-textGray hover:text-red-600 text-2xl">
-                <HiOutlineTrash />
-            </button>
+            <DeleteCartItem productId={productId} />
         </li>
     );
 };
