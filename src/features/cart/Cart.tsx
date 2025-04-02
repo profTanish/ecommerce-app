@@ -2,9 +2,13 @@ import { useMoveBack } from "@/hooks/useMoveBack";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import CartItem from "./CartItem";
 import CartOverview from "./CartOverview";
+import { useSelector } from "react-redux";
+import { getCart } from "./cartSlice";
 
 const Cart = () => {
     const moveBack = useMoveBack();
+    const cart = useSelector(getCart);
+    console.log(cart);
 
     return (
         <div className="max-w-container mx-auto py-16 flex justify-between">
@@ -22,13 +26,9 @@ const Cart = () => {
                 <h2 className="heading-tertiary mt-5 mb-8">Shopping Cart</h2>
 
                 <ul className="max-h-96 overflow-scroll">
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
+                    {cart.map((item) => (
+                        <CartItem key={item.productId} item={item} />
+                    ))}
                 </ul>
             </div>
 
