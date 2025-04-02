@@ -4,11 +4,14 @@ import CartItem from "./CartItem";
 import CartOverview from "./CartOverview";
 import { useSelector } from "react-redux";
 import { getCart } from "./cartSlice";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
     const moveBack = useMoveBack();
     const cart = useSelector(getCart);
     console.log(cart);
+
+    if (!cart.length) return <EmptyCart />;
 
     return (
         <div className="max-w-container mx-auto py-16 flex justify-between">
