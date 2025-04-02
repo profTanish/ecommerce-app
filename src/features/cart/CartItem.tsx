@@ -1,6 +1,9 @@
 import { capitalizeFirstLetter } from "@/lib/helpers";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 import DeleteCartItem from "./DeleteCartItem";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
+import { decreaseQty, increaseQty } from "./cartSlice";
 
 type CartItemProps = {
     item: {
@@ -17,6 +20,8 @@ type CartItemProps = {
 const CartItem = ({ item }: CartItemProps) => {
     const { productId, name, category, price, image, quantity } = item;
 
+    const dispatch = useDispatch<AppDispatch>();
+ 
     return (
         <li className="flex gap-16 justify-between items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray pr-5">
             <div className="flex gap-5">
@@ -33,13 +38,13 @@ const CartItem = ({ item }: CartItemProps) => {
             </div>
 
             <div className="flex gap-4 text-2xl">
-                <button>
+                <button onClick={() => dispatch(decreaseQty(productId))}>
                     <HiMinus />
                 </button>
 
                 <p className="text-lg">{quantity}</p>
 
-                <button>
+                <button onClick={() => dispatch(increaseQty(productId))}>
                     <HiPlus />
                 </button>
             </div>
