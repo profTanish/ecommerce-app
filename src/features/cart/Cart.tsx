@@ -2,14 +2,17 @@ import { useMoveBack } from "@/hooks/useMoveBack";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import CartItem from "./CartItem";
 import CartOverview from "./CartOverview";
-import { useSelector } from "react-redux";
-import { getCart } from "./cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart } from "./cartSlice";
 import EmptyCart from "./EmptyCart";
+import { Button } from "@/components/ui/button";
+import { AppDispatch } from "@/store";
 
 const Cart = () => {
     const moveBack = useMoveBack();
     const cart = useSelector(getCart);
     console.log(cart);
+    const dispatch = useDispatch<AppDispatch>();
 
     if (!cart.length) return <EmptyCart />;
 
@@ -28,11 +31,15 @@ const Cart = () => {
 
                 <h2 className="heading-tertiary mt-5 mb-8">Shopping Cart</h2>
 
-                <ul className="max-h-96 overflow-scroll">
+                <ul className="max-h-96 overflow-scroll mb-5">
                     {cart.map((item) => (
                         <CartItem key={item.productId} item={item} />
                     ))}
                 </ul>
+
+                <Button variant="destructive" onClick={() => dispatch(clearCart())}>
+                    Clear Cart
+                </Button>
             </div>
 
             <CartOverview />

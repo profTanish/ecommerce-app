@@ -16,7 +16,7 @@ const EmptyCart = () => {
                     &larr; Go back
                 </Button>
                 <Button asChild>
-                    <Link to="/shop">Start Shopping</Link>
+                    <Link to="/store">Start Shopping</Link>
                 </Button>
             </div>
         </div>

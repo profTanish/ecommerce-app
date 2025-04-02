@@ -44,7 +44,7 @@ const Product = ({ product }: ProductType) => {
         </div>
       </Link>
 
-      <div className="flex gap-2.5">
+      <div className="flex gap-2.5 mt-2.5">
         <Button variant="outline" className="w-full" onClick={handleAddToCart}>
           Add to Cart
         </Button>
