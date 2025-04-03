@@ -2,6 +2,7 @@ import { AppDispatch } from "@/store";
 import { useDispatch } from "react-redux";
 import { addToCart } from "./cartSlice";
 import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
 const AddItemToCart = ({ product }: { product: product }) => {
     const dispatch = useDispatch<AppDispatch>();
@@ -20,6 +21,7 @@ const AddItemToCart = ({ product }: { product: product }) => {
         };
 
         dispatch(addToCart(newProduct));
+        toast.success("Successfully added item to cart!");
     }
 
     return (

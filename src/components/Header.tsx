@@ -4,10 +4,12 @@ import Navigation from "./Navigation";
 
 const Header = () => {
     return (
-        <header className="max-w-container mx-auto min-h-20 rounded-b-xl flex justify-between px-10">
-            <Logo />
-            <Navigation />
-            <HeaderActions />
+        <header className="min-h-20 fixed top-0 z-50 w-full bg-white flex items-stretch">
+            <div className="flex justify-between items-center  max-w-container mx-auto w-full">
+                <Logo />
+                <Navigation />
+                <HeaderActions />
+            </div>
         </header>
     );
 };

@@ -72,11 +72,11 @@
   }
 
   html {
-    @apply text-textGray scroll-smooth;
+    @apply scroll-smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground pt-20;
   }
 }
 
