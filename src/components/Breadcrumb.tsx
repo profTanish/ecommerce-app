@@ -10,7 +10,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 type BreadcrumbItem = {
-    name: string;
+    name: string | null;
     link?: string;
 };
 
