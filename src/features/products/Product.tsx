@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../lib/helpers";
 import { Button } from "@/components/ui/button";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, getCurrentQuantityById } from "../cart/cartSlice";
 import { AppDispatch } from "@/store";
+import DeleteCartItem from "../cart/DeleteCartItem";
+import EditCartItemQty from "../cart/EditCartItemQty";
 
 type ProductType = {
   product: product;
@@ -14,6 +16,9 @@ const Product = ({ product }: ProductType) => {
   if (!product) return;
 
   const { id, name, images, category, price } = product;
+
+  const curQuantity = useSelector(getCurrentQuantityById(id));
+  const isItemInCart = curQuantity > 0;
 
   function handleAddToCart() {
     const newProduct = {
@@ -44,12 +49,26 @@ const Product = ({ product }: ProductType) => {
         </div>
       </Link>
 
-      <div className="flex gap-2.5 mt-2.5">
-        <Button variant="outline" className="w-full" onClick={handleAddToCart}>
-          Add to Cart
-        </Button>
+      <div className="flex gap-2.5 mt-2.5 justify-between items-center">
+        {isItemInCart ? (
+          <>
+            <EditCartItemQty productId={id} quantity={curQuantity} />
 
-        <Button className="w-full">Buy Now</Button>
+            <DeleteCartItem productId={id} />
+          </>
+        ) : (
+          <>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </Button>
+
+            <Button className="w-full">Buy Now</Button>
+          </>
+        )}
       </div>
     </div>
   );
