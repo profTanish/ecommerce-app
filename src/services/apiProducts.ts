@@ -75,7 +75,6 @@ export async function getRecommendedProducts() {
 
 export async function getProductsByCategory(category: string | null) {
   if (!category) throw Error;
-  console.log(category);
 
   let { data, error } = await supabase
     .from("products")
@@ -86,7 +85,6 @@ export async function getProductsByCategory(category: string | null) {
     console.error(error);
     throw new Error("Related products not found");
   }
-  console.log(data);
 
   return data;
 }

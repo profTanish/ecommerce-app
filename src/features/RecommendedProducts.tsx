@@ -4,7 +4,6 @@ import Spinner from "../components/Spinner";
  
  const RecommendedProducts = () => {
    const { isLoading, recommendedProducts } = useRecommendedProducts();
-   console.log(recommendedProducts);
  
    return (
      <div className="grid grid-cols-3 gap-10">
