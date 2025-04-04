@@ -89,59 +89,61 @@ const CreateNewOrder = () => {
                         )}
                     />
 
-                    <FormField
-                        control={form.control}
-                        name="address.phone"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Phone</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        placeholder="7489403187"
-                                        {...field}
-                                        className="border-darkGray"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                    <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                            control={form.control}
+                            name="address.city"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>City</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Belgrade"
+                                            {...field}
+                                            className="border-darkGray"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    <FormField
-                        control={form.control}
-                        name="address.city"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>City</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Jabalpur"
-                                        {...field}
-                                        className="border-darkGray"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                        <FormField
+                            control={form.control}
+                            name="address.city"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>City</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Jabalpur"
+                                            {...field}
+                                            className="border-darkGray"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    <FormField
-                        control={form.control}
-                        name="address.street"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Street</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Rudarska 6a"
-                                        {...field}
-                                        className="border-darkGray"
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                        <FormField
+                            control={form.control}
+                            name="address.street"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Street</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Rudarska 6a"
+                                            {...field}
+                                            className="border-darkGray"
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
                     <Button type="submit" className="w-full text-md" size="lg">
                         <span>
                             <HiOutlineTruck className="text-2xl mr-2" />
