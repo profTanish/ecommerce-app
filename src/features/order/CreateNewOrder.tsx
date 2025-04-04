@@ -13,6 +13,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { HiOutlineTruck } from "react-icons/hi2";
 
 const CreateNewOrder = () => {
     const form = useForm<z.infer<typeof orderValidation>>({
@@ -35,15 +36,23 @@ const CreateNewOrder = () => {
     }
 
     return (
-        <div className="max-w-container mx-auto py-8">
-            <h3 className="heading-tertiary">Create new order</h3>
-            <p className="text-textGray">
-                Please fill the form beneath in order to continue. Remember do not use
-                real data!
-            </p>
+        <Form {...form}>
+            <div className="max-w-container mx-auto flex items-center justify-between py-16">
+                <div className="basis-1/2">
+                    <h3 className="text-darkSlate text-5xl font-bold mb-2.5">
+                        Create new order
+                    </h3>
+                    <p className="text-textGray max-w-md">
+                        Please fill the form beneath in order to continue. Remember do not
+                        use real data because this is a test application and your data can
+                        possibly get leaked!
+                    </p>
+                </div>
 
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="max-w-xl space-y-4 basis-1/2"
+                >
                     <FormField
                         control={form.control}
                         name="fullName"
@@ -51,7 +60,11 @@ const CreateNewOrder = () => {
                             <FormItem>
                                 <FormLabel>Full Name</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Andrija Djordjevic" {...field} />
+                                    <Input
+                                        placeholder="Andrija Djordjevic"
+                                        {...field}
+                                        className="border-darkGray"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -65,7 +78,11 @@ const CreateNewOrder = () => {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="andrijaweb@office.com" {...field} />
+                                    <Input
+                                        placeholder="hellotanish2000@gmail.com"
+                                        {...field}
+                                        className="border-darkGray"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -79,7 +96,11 @@ const CreateNewOrder = () => {
                             <FormItem>
                                 <FormLabel>Phone</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="0616667301" {...field} />
+                                    <Input
+                                        placeholder="7489403187"
+                                        {...field}
+                                        className="border-darkGray"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -93,7 +114,11 @@ const CreateNewOrder = () => {
                             <FormItem>
                                 <FormLabel>City</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Belgrade" {...field} />
+                                    <Input
+                                        placeholder="Jabalpur"
+                                        {...field}
+                                        className="border-darkGray"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -107,16 +132,25 @@ const CreateNewOrder = () => {
                             <FormItem>
                                 <FormLabel>Street</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Rudarska 6a" {...field} />
+                                    <Input
+                                        placeholder="Rudarska 6a"
+                                        {...field}
+                                        className="border-darkGray"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className="w-full text-md" size="lg">
+                        <span>
+                            <HiOutlineTruck className="text-2xl mr-2" />
+                        </span>
+                        Place Order
+                    </Button>
                 </form>
-            </Form>
-        </div>
+            </div>
+        </Form >
     );
 };
 
