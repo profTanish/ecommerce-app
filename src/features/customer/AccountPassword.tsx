@@ -12,8 +12,12 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useUpdateUser } from "../authentication/useUpdateUser";
+import Spinner from "@/components/Spinner";
 
 const AccountPassword = () => {
+    const { updateUser, isUpdating } = useUpdateUser();
+
     const form = useForm<z.infer<typeof passwordValidation>>({
         resolver: zodResolver(passwordValidation),
         defaultValues: {
@@ -23,9 +27,9 @@ const AccountPassword = () => {
     });
 
     function onSubmit(values: z.infer<typeof passwordValidation>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
+        const { password } = values;
+
+        updateUser({ password });
     }
 
     return (
@@ -72,8 +76,8 @@ const AccountPassword = () => {
                         />
                     </div>
 
-                    <Button type="submit" className="">
-                        Update password
+                    <Button type="submit" disabled={isUpdating}>
+                        {!isUpdating ? " Update password" : <Spinner />}
                     </Button>
                 </form>
             </div>

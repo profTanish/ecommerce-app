@@ -23,7 +23,6 @@ import { useUser } from "@/features/authentication/useUser";
 const LoginForm = () => {
     const { login, isPending } = useLogin();
     const { user } = useUser();
-    console.log(user);
 
     const form = useForm<z.infer<typeof loginValidation>>({
         resolver: zodResolver(loginValidation),
