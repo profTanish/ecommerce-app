@@ -13,7 +13,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { loginValidation } from "@/features/authentication/validation";
+import { loginValidation } from "@/lib/validation";
 
 import { Link } from "react-router-dom";
 import { useLogin } from "@/features/authentication/useLogin";

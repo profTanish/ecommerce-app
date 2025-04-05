@@ -13,7 +13,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { signupValidation } from "@/features/authentication/validation";
+import { signupValidation } from "@/lib/validation";
 
 import { Link } from "react-router-dom";
 import Spinner from "../../../components/Spinner";

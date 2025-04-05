@@ -16,6 +16,7 @@ import Cart from "./features/cart/Cart.tsx";
 import CreateNewOrder from "./features/order/CreateNewOrder.tsx";
 import Order from "./features/order/Order.tsx";
 import Account from "./features/customer/Account.tsx";
+import AccountGeneral from "./features/customer/AccountGeneral.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,7 +51,10 @@ const App = () => {
             <Route path="cart" element={<Cart />} />
             <Route path="order/new" element={<CreateNewOrder />} />
             <Route path="order/:orderId" element={<Order />} />
-            <Route path="account" element={<Account />} />
+            <Route path="account" element={<Account />}>
+              <Route index element={<Navigate to="general" />} />
+              <Route path="general" element={<AccountGeneral />} />
+            </Route>
           </Route>
 
           <Route element={<AuthLayout />}>
