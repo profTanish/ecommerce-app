@@ -34,13 +34,7 @@ const App = () => {
 
       <BrowserRouter>
         <Routes>
-          <Route
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
+          <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Homepage />} />
             <Route path="store" element={<StorePage />} />
@@ -50,9 +44,31 @@ const App = () => {
             />
             <Route path="about" element={<About />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="order/new" element={<CreateNewOrder />} />
-            <Route path="order/:orderId" element={<Order />} />
-            <Route path="account" element={<Account />}>
+
+            <Route
+              path="order/new"
+              element={
+                <ProtectedRoute>
+                  <CreateNewOrder />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="order/:orderId"
+              element={
+                <ProtectedRoute>
+                  <Order />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="account"
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Navigate to="general" />} />
               <Route path="general" element={<AccountGeneral />} />
               <Route path="password" element={<AccountPassword />} />

@@ -1,10 +1,11 @@
 import ButtonMoveBack from "@/components/ButtonMoveBack";
 import {
+    HiOutlineLifebuoy,
     HiOutlineLockClosed,
-    HiOutlinePhoto,
     HiOutlineUser,
 } from "react-icons/hi2";
 import { NavLink, Outlet } from "react-router-dom";
+import Logout from "../authentication/Logout";
 
 const Account = () => {
     const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
@@ -20,7 +21,7 @@ const Account = () => {
             <h3 className="text-3xl font-bold">Account Settings</h3>
             <p className="text-textGray">Change your profile & account settings.</p>
 
-            <div className="bg-lightGray p-5 rounded-md mt-10 grid grid-cols-[1fr_4fr]">
+            <div className="border-2 border-lightGray p-5 rounded-md mt-10 grid grid-cols-[1fr_4fr]">
                 <aside>
                     <ul className="text-textGray font-semibold">
                         <li>
@@ -46,14 +47,18 @@ const Account = () => {
                         </li>
 
                         <li>
-                            <NavLink to="avatar" className={navLinkClasses}>
+                            <NavLink to="/help" className={navLinkClasses}>
                                 {({ isActive }) => (
                                     <>
-                                        <HiOutlinePhoto className={iconClasses(isActive)} />
-                                        Avatar
+                                        <HiOutlineLifebuoy className={iconClasses(isActive)} />
+                                        Help
                                     </>
                                 )}
                             </NavLink>
+                        </li>
+
+                        <li>
+                            <Logout />
                         </li>
                     </ul>
                 </aside>

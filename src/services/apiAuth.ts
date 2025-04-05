@@ -41,11 +41,9 @@ export async function login({ email, password }: LoginProps) {
 
 export async function getCurrentUser() {
     const { data: session } = await supabase.auth.getSession();
-    if (!session) return null;
+    if (!session.session) return null;
 
     const { data, error } = await supabase.auth.getUser();
-
-    console.log(data);
 
     if (error) throw new Error(error.message);
 

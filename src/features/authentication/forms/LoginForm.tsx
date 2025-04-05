@@ -35,8 +35,6 @@ const LoginForm = () => {
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof loginValidation>) {
-        console.log(values);
-
         if (!values) return;
 
         const { email, password } = values;

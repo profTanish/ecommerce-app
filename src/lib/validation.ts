@@ -31,7 +31,6 @@ export const orderValidation = z.object({
     address: addressSchema,
 });
 
-// Account Settings
 export const passwordValidation = z
     .object({
         password: z.string().min(2),
