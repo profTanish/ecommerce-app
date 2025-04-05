@@ -30,3 +30,16 @@ export const orderValidation = z.object({
     email: z.string().email(),
     address: addressSchema,
 });
+
+// Account Settings
+export const passwordValidation = z
+    .object({
+        password: z.string().min(2),
+        confirmPassword: z.string().min(2),
+    })
+    .refine(
+        (values) => {
+            return values.password === values.confirmPassword;
+        },
+        { message: "Password must match!", path: ["confirmPassword"] }
+    );

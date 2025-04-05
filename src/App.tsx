@@ -17,6 +17,7 @@ import CreateNewOrder from "./features/order/CreateNewOrder.tsx";
 import Order from "./features/order/Order.tsx";
 import Account from "./features/customer/Account.tsx";
 import AccountGeneral from "./features/customer/AccountGeneral.tsx";
+import AccountPassword from "./features/customer/AccountGeneral.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="account" element={<Account />}>
               <Route index element={<Navigate to="general" />} />
               <Route path="general" element={<AccountGeneral />} />
+              <Route path="password" element={<AccountPassword />} />
             </Route>
           </Route>
 
