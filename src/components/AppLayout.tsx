@@ -1,8 +1,19 @@
 import { Outlet } from "react-router-dom";
- import Footer from "./Footer";
- import Header from "./Header";
+import Footer from "./Footer";
+import Header from "./Header";
+import { useUser } from "@/features/authentication/useUser";
+import Spinner from "./Spinner";
 
 const AppLayout = () => {
+  const { isLoading } = useUser();
+
+  if (isLoading)
+    return (
+      <div className="h-screen bg-lightGray flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+
   return (
     <div>
       <Header />
