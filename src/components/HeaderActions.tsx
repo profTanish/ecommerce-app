@@ -19,9 +19,12 @@ const HeaderActions = () => {
                 <HiOutlineShoppingCart className="text-2xl" />
             </button>
 
-            <button className="text-center p-3 border border-darkSlate bg-darkSlate rounded-full">
+            <Link
+                to="account"
+                className="text-center p-3 border border-darkSlate bg-darkSlate rounded-full"
+            >
                 <HiOutlineUser className="text-2xl text-white" />
-            </button>
+            </Link>
         </div>
     );
 };

@@ -3,11 +3,10 @@ import Lottie from "lottie-react";
 import PageNotFoundLottie from "../lotties/PageNotFoundLottie.json";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useMoveBack } from "../hooks/useMoveBack";
 import { Link } from "react-router-dom";
+import ButtonMoveBack from "@/components/ButtonMoveBack";
 
 const PageNotFound = () => {
-    const moveBack = useMoveBack();
 
     return (
         <div className="h-screen">
@@ -22,12 +21,7 @@ const PageNotFound = () => {
                             <Link to="/">Go Home</Link>
                         </button>
 
-                        <button
-                            onClick={moveBack}
-                            className="px-4 py-2.5 bg-darkSlate text-white rounded-full"
-                        >
-                            &larr; Go Back
-                        </button>
+                        <ButtonMoveBack variant="button" />
                     </div>
                 </div>
 
