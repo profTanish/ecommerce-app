@@ -17,15 +17,19 @@ import { HiOutlineTruck } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import { getCart } from "../cart/cartSlice";
 import { Navigate } from "react-router-dom";
+import { useCreateCustomer } from "../customer/useCreateCustomer";
+import { useUser } from "../authentication/useUser";
 
 const CreateNewOrder = () => {
     const cart = useSelector(getCart);
+    const { user } = useUser();
+    const { createNewCustomer, isCreating } = useCreateCustomer();
 
     const form = useForm<z.infer<typeof orderValidation>>({
         resolver: zodResolver(orderValidation),
         defaultValues: {
-            fullName: "",
-            email: "",
+            fullName: user ? user.user_metadata.name : "",
+            email: user ? user.user_metadata.email : "",
             address: {
                 phone: "",
                 city: "",
@@ -35,9 +39,7 @@ const CreateNewOrder = () => {
     });
 
     function onSubmit(values: z.infer<typeof orderValidation>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values);
+        createNewCustomer(values);
     }
 
     if (!cart.length) return <Navigate to="/cart" replace />;
