@@ -28,18 +28,21 @@ const SignupForm = () => {
             name: "",
             email: "",
             password: "",
+            address: {
+                phone: "",
+                city: "",
+                street: "",
+            },
         },
     });
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof signupValidation>) {
-        console.log(values);
-
         if (!values) return;
 
-        const { name, email, password } = values;
+        const { name, email, password, address } = values;
 
-        signup({ name, email, password });
+        signup({ name, email, password, address });
     }
 
     return (
@@ -48,26 +51,88 @@ const SignupForm = () => {
                 <h3 className="heading-tertiary mb-5 text-center">
                     Create a new account
                 </h3>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="shad-form_label">Name</FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="text"
-                                        placeholder="Andrija Djordjevic"
-                                        disabled={isPending}
-                                        className="shad-input"
-                                        {...field}
-                                    />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="shad-form_label">Name</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Andrija Djordjevic"
+                                            disabled={isPending}
+                                            className="shad-input"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="address.phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="shad-form_label">Phone</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="+381 61 5429824"
+                                            disabled={isPending}
+                                            className="shad-input"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="address.city"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="shad-form_label">City</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Belgrade"
+                                            disabled={isPending}
+                                            className="shad-input"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="address.street"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel className="shad-form_label">Address</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            type="text"
+                                            placeholder="Cara Dusana 53a"
+                                            disabled={isPending}
+                                            className="shad-input"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
 
                     <FormField
                         control={form.control}

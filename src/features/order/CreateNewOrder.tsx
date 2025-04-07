@@ -17,7 +17,7 @@ import { HiOutlineTruck } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import { getCart } from "../cart/cartSlice";
 import { Navigate } from "react-router-dom";
-import { useCreateCustomer } from "../customer/useCreateCustomer";
+import { useCreateCustomer } from "../authentication/useCreateCustomer";
 import { useUser } from "../authentication/useUser";
 
 const CreateNewOrder = () => {

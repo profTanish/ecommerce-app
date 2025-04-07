@@ -15,9 +15,9 @@ import ProductDetails from "./features/products/ProductDetails.tsx";
 import Cart from "./features/cart/Cart.tsx";
 import CreateNewOrder from "./features/order/CreateNewOrder.tsx";
 import Order from "./features/order/Order.tsx";
-import Account from "./features/customer/Account.tsx";
-import AccountGeneral from "./features/customer/AccountGeneral.tsx";
-import AccountPassword from "./features/customer/AccountGeneral.tsx";
+import Account from "./features/authentication/Account.tsx";
+import AccountGeneral from "./features/authentication/AccountGeneral.tsx";
+import AccountPassword from "./features/authentication/AccountGeneral.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {

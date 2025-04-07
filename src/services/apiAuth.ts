@@ -5,6 +5,11 @@ type SignupProps = {
   name: string;
   email: string;
   password: string;
+  address: {
+    phone: string;
+    city: string;
+    street: string;
+  };
 };
 
 type LoginProps = {
@@ -17,13 +22,14 @@ type updateUserProps = {
   fullName?: string;
 };
 
-export async function signup({ name, email, password }: SignupProps) {
+export async function signup({ name, email, password, address }: SignupProps) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
         name,
+        address,
         avatar: "",
       },
     },

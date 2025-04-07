@@ -8,21 +8,22 @@ export const loginValidation = z.object({
         .min(8, { message: "Passwords must be at least 8 characters." }),
 });
 
-export const signupValidation = z.object({
-    name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-    email: z.string().email(),
-    password: z
-        .string()
-        .min(8, { message: "Passwords must be at least 8 characters." }),
-});
-
-// Order
 const addressSchema = z.object({
     phone: z.string().min(1, { message: "Phone number is required." }),
     city: z.string().min(1, { message: "City is required." }),
     street: z.string().min(1, { message: "Street address is required." }),
 });
 
+export const signupValidation = z.object({
+    name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+    email: z.string().email(),
+    password: z
+        .string()
+        .min(8, { message: "Passwords must be at least 8 characters." }),
+        address: addressSchema,
+});
+
+// Order
 export const orderValidation = z.object({
     fullName: z.string().min(2, {
         message: "Name must be at least 2 characters.",
