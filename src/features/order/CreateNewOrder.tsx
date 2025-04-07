@@ -14,8 +14,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { HiOutlineTruck } from "react-icons/hi2";
+import { useSelector } from "react-redux";
+import { getCart } from "../cart/cartSlice";
+import { Navigate } from "react-router-dom";
 
 const CreateNewOrder = () => {
+    const cart = useSelector(getCart);
+
     const form = useForm<z.infer<typeof orderValidation>>({
         resolver: zodResolver(orderValidation),
         defaultValues: {
@@ -34,6 +39,8 @@ const CreateNewOrder = () => {
         // ✅ This will be type-safe and validated.
         console.log(values);
     }
+
+    if (!cart.length) return <Navigate to="/cart" replace />;
 
     return (
         <Form {...form}>

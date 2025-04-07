@@ -6,6 +6,7 @@ import {
     calculateShipping,
     calculateTax,
 } from "@/lib/helpers";
+import { Link } from "react-router-dom";
 
 const CartOverview = () => {
     const totalCartPrice = useSelector(getTotalCartPrice);
@@ -40,7 +41,9 @@ const CartOverview = () => {
                     </p>
                 </li>
             </ul>
-            <Button className="w-full">Checkout</Button>
+            <Button className="w-full" asChild>
+                <Link to="/order/new">Checkout</Link>
+            </Button>
         </div>
     );
 };
