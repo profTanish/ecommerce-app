@@ -147,7 +147,12 @@ const CreateNewOrder = () => {
                         />
                     </div>
                     <div>
-                        <Button type="submit" className="w-full text-md" size="lg">
+                        <Button
+                            type="submit"
+                            className="w-full text-md"
+                            size="lg"
+                            disabled={isCreating}
+                        >
                             <span>
                                 <HiOutlineTruck className="text-2xl mr-2" />
                             </span>
