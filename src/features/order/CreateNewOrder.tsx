@@ -1,172 +1,70 @@
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { orderValidation } from "../../lib/validation";
-
-import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { HiOutlineTruck } from "react-icons/hi2";
-import { useSelector } from "react-redux";
-import { getCart } from "../cart/cartSlice";
 import { Navigate } from "react-router-dom";
-import { useCreateCustomer } from "../authentication/useCreateCustomer";
+import { useSelector } from "react-redux";
+import { Button } from "@/components/ui/button";
+
+import {
+    getCart,
+    getTotalCartPrice,
+    getTotalCartProducts,
+    getTotalCartQuantity,
+} from "../cart/cartSlice";
+
 import { useUser } from "../authentication/useUser";
+import { useCreateOrder } from "./useCreateOrder";
+import { useGetCustomer } from "../customer/useGetCustomer";
+import { useCreateCustomer } from "../customer/useCreateCustomer";
+
+import OrderSummary from "./OrderSummary";
+import AddressInfo from "./AddressInfo";
 
 const CreateNewOrder = () => {
-    const cart = useSelector(getCart);
-    const { user } = useUser();
-    const { createNewCustomer, isCreating } = useCreateCustomer();
+    const { createOrder, isCreatingOrder } = useCreateOrder();
+    const { customer } = useGetCustomer(user?.email);
+    const { createNewCustomer, isCreatingCustomer } = useCreateCustomer();
 
-    const form = useForm<z.infer<typeof orderValidation>>({
-        resolver: zodResolver(orderValidation),
-        defaultValues: {
-            fullName: user ? user.user_metadata.name : "",
-            email: user ? user.user_metadata.email : "",
-            address: {
-                phone: "",
-                city: "",
-                street: "",
-            },
-        },
-    });
+    const totalCartPrice = useSelector(getTotalCartPrice);
+    const totalCartQuantity = useSelector(getTotalCartQuantity);
+    const totalCartProducts = useSelector(getTotalCartProducts);
 
-    function onSubmit(values: z.infer<typeof orderValidation>) {
-        createNewCustomer(values);
+    if (!user || !cart.length) return <Navigate to="/cart" replace />;
+
+    const { address, name, email } = user?.user_metadata;
+
+    function handleCreateOrder() {
+        const newOrder = {
+            status: "undelivered",
+            totalAmount: totalCartPrice,
+            totalProducts: totalCartProducts,
+            totalQuantity: totalCartQuantity,
+            products: cart,
+        };
+
+        if (!customer) {
+            createNewCustomer(
+                { fullName: name, email, address },
+                {
+                    onSuccess: (newCustomer) => {
+                        createOrder({ ...newOrder, customerId: newCustomer.id });
+                    },
+                }
+            );
+        } else {
+            createOrder({ ...newOrder, customerId: customer.id });
+        }
     }
 
-    if (!cart.length) return <Navigate to="/cart" replace />;
-
     return (
-        <Form {...form}>
-            <div className="mx-auto max-w-3xl pt-8 pb-16 space-y-10">
-                <h2 className="heading-secondary mb-2.5 text-center">
-                    Create new order
-                </h2>
-
-                <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="mx-auto max-w-xl space-y-4"
-                >
-                    <div className="grid grid-cols-2 gap-4">
-                        <FormField
-                            control={form.control}
-                            name="fullName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Full Name</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="Andrija Djordjevic"
-                                            {...field}
-                                            className="border-darkGray"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="andrijaweb@office.com"
-                                            {...field}
-                                            className="border-darkGray"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="address.city"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>City</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="Belgrade"
-                                            {...field}
-                                            className="border-darkGray"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="address.city"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>City</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="Jabalpur"
-                                            {...field}
-                                            className="border-darkGray"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="address.street"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Street</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="Rudarska 6a"
-                                            {...field}
-                                            className="border-darkGray"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-                    <div>
-                        <Button
-                            type="submit"
-                            className="w-full text-md"
-                            size="lg"
-                            disabled={isCreating}
-                        >
-                            <span>
-                                <HiOutlineTruck className="text-2xl mr-2" />
-                            </span>
-                            Place Order
-                        </Button>
-                        <p className="text-xs text-textGray mt-2">
-                            Please fill the form above in order to continue. Remember do not
-                            use real data because this is a test application and your data can
-                            possibly get leaked!
-                        </p>
-                    </div>
-                </form>
-            </div>
-        </Form >
+        <div className="max-w-container mx-auto py-16">
+            <h2 className="heading-secondary mb-5">Confirm your order</h2>
+            <AddressInfo address={address} name={name} email={email} />
+            <OrderSummary cart={cart} />
+            <Button
+                disabled={isCreatingOrder || isCreatingCustomer}
+                onClick={handleCreateOrder}
+            >
+                Order Now
+            </Button>
+        </div>
     );
 };
 
