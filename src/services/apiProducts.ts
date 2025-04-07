@@ -76,7 +76,7 @@ export async function getRecommendedProducts() {
 export async function getProductsByCategory(category: string | null) {
   if (!category) throw Error;
 
-  let { data, error } = await supabase
+  const { data, error } = await supabase
     .from("products")
     .select("*")
     .eq("category", category);

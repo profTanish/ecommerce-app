@@ -1,8 +1,18 @@
 import supabase from "./supabase";
 
+type cartProductsType = {
+    productId: number;
+    name: string;
+    category: string;
+    price: number;
+    image: string;
+    totalPrice: number;
+    quantity: number;
+};
+
 type createNewOrderProps = {
     customerId: number;
-    products: product[];
+    products: cartProductsType[];
     totalProducts: number;
     totalQuantity: number;
     totalAmount: number;

@@ -41,6 +41,7 @@ const CartOverview = () => {
                     </p>
                 </li>
             </ul>
+            
             <Button className="w-full" asChild>
                 <Link to="/order/new">Checkout</Link>
             </Button>
