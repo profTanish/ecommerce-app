@@ -24,3 +24,19 @@ export async function createCustomer(newCustomer: createCustomerProps) {
 
     return data;
 }
+
+export async function getCustomerByEmail(customerEmail?: string) {
+    if (!customerEmail) return;
+  
+    const { data, error } = await supabase
+      .from("customers")
+      .select("*")
+      .eq("email", customerEmail)
+      .single();
+  
+    if (error) {
+      throw new Error("Customer not found");
+    }
+  
+    return data;
+  }
