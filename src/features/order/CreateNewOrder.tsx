@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 
@@ -18,6 +18,7 @@ import OrderSummary from "./OrderSummary";
 import AddressInfo from "./AddressInfo";
 
 const CreateNewOrder = () => {
+    const navigate = useNavigate();
     const { createOrder, isCreatingOrder } = useCreateOrder();
     const { customer } = useGetCustomer(user?.email);
     const { createNewCustomer, isCreatingCustomer } = useCreateCustomer();
@@ -44,12 +45,26 @@ const CreateNewOrder = () => {
                 { fullName: name, email, address },
                 {
                     onSuccess: (newCustomer) => {
-                        createOrder({ ...newOrder, customerId: newCustomer.id });
+                        createOrder(
+                            { ...newOrder, customerId: newCustomer.id },
+                            {
+                              onSuccess: (createdOrder) => {
+                                navigate(`/order/${createdOrder.id}`);
+                              },
+                            }
+                          );
                     },
                 }
             );
         } else {
-            createOrder({ ...newOrder, customerId: customer.id });
+            createOrder(
+                { ...newOrder, customerId: customer.id },
+                {
+                  onSuccess: (createdOrder) => {
+                    navigate(`/order/${createdOrder.id}`);
+                  },
+                }
+              );
         }
     }
 

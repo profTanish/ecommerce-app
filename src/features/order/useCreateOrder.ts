@@ -7,9 +7,10 @@ export function useCreateOrder() {
 
     const { mutate: createOrder, isPending: isCreatingOrder } = useMutation({
         mutationFn: createNewOrder,
-        onSuccess: () => {
+        onSuccess: (data) => {
             toast.success("Your order is successfully created!");
             queryClient.invalidateQueries({ queryKey: ["orders"] });
+            return data;
         },
         onError: (err) => toast.error(err.message),
     });
