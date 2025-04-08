@@ -1,25 +1,16 @@
-import { Button } from "@/components/ui/button";
 import {
     HiOutlineEnvelope,
     HiOutlineMapPin,
     HiOutlinePhone,
     HiOutlineUser,
 } from "react-icons/hi2";
-import { useGetOrderById } from "./useGetOrderById";
+
 import Spinner from "@/components/Spinner";
+import { Button } from "@/components/ui/button";
+import { useGetOrderById } from "./useGetOrderById";
 import { getEstimatedDeliveryDate } from "@/lib/helpers";
 import { useGetCustomer } from "../customer/useGetCustomer";
 import { useUser } from "../authentication/useUser";
-
-type Product = {
-    productId: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-    totalPrice: number;
-    quantity: number;
-};
 
 const Order = () => {
     const { user } = useUser();
@@ -28,8 +19,12 @@ const Order = () => {
         user ? user.email : ""
     );
 
-    if (isLoadingOrder) return <Spinner />;
-    if (!order) return <div>No order could be found.</div>;
+    const isLoading = isLoadingCustomer || isLoadingOrder;
+
+    if (isLoading) return <Spinner />;
+    if (!order || !customer) return <div>No order could be found.</div>;
+
+    const { fullName, email, address } = customer;
 
     const {
         created_at,
@@ -56,7 +51,7 @@ const Order = () => {
                 <div className="basis-1/2">
                     <h3 className="heading-tertiary">Order Item</h3>
                     <ul className="max-h-96 overflow-scroll mb-5 pr-5">
-                        {(products as Product[])?.map((item) => (
+                        {(products as CartProduct[])?.map((item) => (
                             <li
                                 key={item.productId}
                                 className="flex gap-16 justify-between items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray"
@@ -90,26 +85,22 @@ const Order = () => {
                     <div className="p-5 border-2 border-darkGray rounded-md">
                         <h3 className="heading-tertiary mb-5">Address & Contact</h3>
                         <ul className="text-textGray flex flex-col gap-2.5">
-                            {isLoadingCustomer ? (
-                                <Spinner />
-                            ) : (
-                                <>
-                                    <li className="flex items-center gap-2.5">
-                                        <HiOutlineUser className="text-xl" />
-                                        {customer?.fullName}
-                                    </li>
-                                    <li className="flex items-center gap-2.5">
-                                        <HiOutlineMapPin className="text-xl" />
-                                    </li>
-                                    <li className="flex items-center gap-2.5">
-                                        <HiOutlineEnvelope className="text-xl" />
-                                        {customer?.email}
-                                    </li>
-                                    <li className="flex items-center gap-2.5">
-                                        <HiOutlinePhone className="text-xl" />
-                                    </li>
-                                </>
-                            )}
+                            <li className="flex items-center gap-2.5">
+                                <HiOutlineUser className="text-xl" />
+                                {fullName ?? "N/A"}
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                                <HiOutlineMapPin className="text-xl" />
+                                {address?.street ?? "N/A"}, {address?.city ?? "N/A"}
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                                <HiOutlineEnvelope className="text-xl" />
+                                {email ?? "N/A"}
+                            </li>
+                            <li className="flex items-center gap-2.5">
+                                <HiOutlinePhone className="text-xl" />
+                                {address?.phone ?? "Test"}
+                            </li>
                         </ul>
                     </div>
 
