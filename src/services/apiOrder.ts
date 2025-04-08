@@ -33,3 +33,20 @@ export async function createNewOrder(newOrder: createNewOrderProps) {
 
     return data;
 }
+
+export async function getOrderById(orderId?: string) {
+    if (!orderId) return;
+
+    const { data, error } = await supabase
+        .from("orders")
+        .select("*")
+        .eq("id", orderId)
+        .single();
+
+    if (error) {
+        console.error(error);
+        throw new Error("Order not found");
+    }
+
+    return data;
+}
