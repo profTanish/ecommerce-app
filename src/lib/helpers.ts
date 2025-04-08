@@ -34,3 +34,11 @@ export const getEstimatedDeliveryDate = (
     const estimatedDeliveryDate = addDays(createdDate, daysToAdd);
     return format(estimatedDeliveryDate, "MMMM d, yyyy, hh:mm a");
   };
+
+  export function parseAddress(json: any): Address | null {
+    if (typeof json === "object" && json !== null) {
+      const { phone, city, street } = json;
+      return { phone, city, street } as Address;
+    }
+    return null;
+  }

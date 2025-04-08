@@ -1,3 +1,4 @@
+import { parseAddress } from "@/lib/helpers";
 import supabase from "./supabase";
 
 type createCustomerProps = {
@@ -25,18 +26,23 @@ export async function createCustomer(newCustomer: createCustomerProps) {
     return data;
 }
 
-export async function getCustomerByEmail(customerEmail?: string) {
-    if (!customerEmail) return;
-  
+export async function getCustomerByEmail(
+    customerEmail?: string
+): Promise<Customer | null> {
+    if (!customerEmail) return null;
+
     const { data, error } = await supabase
-      .from("customers")
-      .select("*")
-      .eq("email", customerEmail)
-      .single();
-  
+        .from("customers")
+        .select("*")
+        .eq("email", customerEmail)
+        .single();
+
     if (error) {
-      throw new Error("Customer not found");
+        throw new Error("Customer not found");
     }
-  
-    return data;
-  }
+
+    return {
+        ...data,
+        address: parseAddress(data.address),
+    };
+}
