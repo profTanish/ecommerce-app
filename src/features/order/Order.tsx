@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
     HiOutlineEnvelope,
     HiOutlineMapPin,
@@ -11,8 +12,10 @@ import { useGetOrderById } from "./useGetOrderById";
 import { getEstimatedDeliveryDate } from "@/lib/helpers";
 import { useGetCustomer } from "../customer/useGetCustomer";
 import { useUser } from "../authentication/useUser";
+import { Link, useNavigate } from "react-router-dom";
 
 const Order = () => {
+    const navigate = useNavigate();
     const { user } = useUser();
     const { order, isLoading: isLoadingOrder } = useGetOrderById();
     const { customer, isLoading: isLoadingCustomer } = useGetCustomer(
@@ -20,6 +23,12 @@ const Order = () => {
     );
 
     const isLoading = isLoadingCustomer || isLoadingOrder;
+
+    useEffect(() => {
+        if (customer && order && customer.id !== order.customerId) {
+            navigate("/404", { replace: true });
+        }
+    }, [customer, order, history]);
 
     if (isLoading) return <Spinner />;
     if (!order || !customer) return <div>No order could be found.</div>;
@@ -73,7 +82,9 @@ const Order = () => {
                         ))}
                     </ul>
 
-                    <Button>Continue Shopping</Button>
+                    <Button asChild>
+                        <Link to="/store">Continue Shopping</Link>
+                    </Button>
 
                     <div className="mt-5 bg-lightGray p-5 rounded-md">
                         Estimated delivery:{" "}
