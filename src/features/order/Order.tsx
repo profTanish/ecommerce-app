@@ -5,39 +5,84 @@ import {
     HiOutlinePhone,
     HiOutlineUser,
 } from "react-icons/hi2";
+import { useGetOrderById } from "./useGetOrderById";
+import Spinner from "@/components/Spinner";
+import { getEstimatedDeliveryDate } from "@/lib/helpers";
+import { useGetCustomer } from "../customer/useGetCustomer";
+import { useUser } from "../authentication/useUser";
+
+type Product = {
+    productId: number;
+    name: string;
+    category: string;
+    price: number;
+    image: string;
+    totalPrice: number;
+    quantity: number;
+};
 
 const Order = () => {
+    const { user } = useUser();
+    const { order, isLoading: isLoadingOrder } = useGetOrderById();
+    const { customer, isLoading: isLoadingCustomer } = useGetCustomer(
+        user ? user.email : ""
+    );
+
+    if (isLoadingOrder) return <Spinner />;
+    if (!order) return <div>No order could be found.</div>;
+
+    const {
+        created_at,
+        status,
+        id,
+        products,
+        totalAmount,
+        totalProducts,
+        totalQuantity,
+    } = order;
+
+    const estimatedDeliveryDate = getEstimatedDeliveryDate(created_at);
+
     return (
         <div className="max-w-container mx-auto py-16">
             <div className="flex items-center gap-8 mb-5">
-                <h3 className="text-3xl font-bold text-darkSlate">Order ID: #5JDZEJ</h3>
+                <h3 className="text-3xl font-bold text-darkSlate">Order ID: #{id}</h3>
                 <p className="text-red-600 px-2.5 py-1 bg-red-200 inline rounded-md">
-                    Undelivered
+                    {status}
                 </p>
             </div>
 
             <div className="flex justify-between">
                 <div className="basis-1/2">
                     <h3 className="heading-tertiary">Order Item</h3>
-                    <ul className="max-h-96 overflow-scroll mb-5">
-                        <li className="flex gap-16 justify-between items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray">
-                            <div className="flex items-center gap-4">
-                                <div className="max-w-[5] max-h-[5rem] rounded-md overflow-hidden">
-                                    <img className="w-full h-full" src="/test.jpg" alt="bike" />
+                    <ul className="max-h-96 overflow-scroll mb-5 pr-5">
+                        {(products as Product[])?.map((item) => (
+                            <li
+                                key={item.productId}
+                                className="flex gap-16 justify-between items-center py-5 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-lightGray"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="w-[5] h-[5rem] rounded-md overflow-hidden">
+                                        <img
+                                            className="w-full h-full"
+                                            src={item.image}
+                                            alt={item.name}
+                                        />
+                                    </div>
+                                    <p className="font-bold">{item.quantity}x</p>
+                                    <p>{item.name}</p>
                                 </div>
-                                <p className="font-bold">1x</p>
-                                <p>Classic Red Jogger Sweatpants</p>
-                            </div>
 
-                            <p className="font-bold">$48.99</p>
-                        </li>
+                                <p className="font-bold">${item.price}</p>
+                            </li>
+                        ))}
                     </ul>
 
                     <Button>Continue Shopping</Button>
 
                     <div className="mt-5 bg-lightGray p-5 rounded-md">
                         Estimated delivery:{" "}
-                        <span className="font-bold">July 14, 06:00 PM</span>
+                        <span className="font-bold">{estimatedDeliveryDate}</span>
                     </div>
                 </div>
 
@@ -45,22 +90,26 @@ const Order = () => {
                     <div className="p-5 border-2 border-darkGray rounded-md">
                         <h3 className="heading-tertiary mb-5">Address & Contact</h3>
                         <ul className="text-textGray flex flex-col gap-2.5">
-                            <li className="flex items-center gap-2.5">
-                                <HiOutlineUser className="text-xl" />
-                                David Beckham
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <HiOutlineMapPin className="text-xl" />
-                                Rudarska 6a, Nis
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <HiOutlineEnvelope className="text-xl" />
-                                davidbeckham@gmail.com
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <HiOutlinePhone className="text-xl" />
-                                1815291925916
-                            </li>
+                            {isLoadingCustomer ? (
+                                <Spinner />
+                            ) : (
+                                <>
+                                    <li className="flex items-center gap-2.5">
+                                        <HiOutlineUser className="text-xl" />
+                                        {customer?.fullName}
+                                    </li>
+                                    <li className="flex items-center gap-2.5">
+                                        <HiOutlineMapPin className="text-xl" />
+                                    </li>
+                                    <li className="flex items-center gap-2.5">
+                                        <HiOutlineEnvelope className="text-xl" />
+                                        {customer?.email}
+                                    </li>
+                                    <li className="flex items-center gap-2.5">
+                                        <HiOutlinePhone className="text-xl" />
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
 
@@ -69,15 +118,15 @@ const Order = () => {
                         <ul className="text-textGray flex flex-col gap-2.5">
                             <li className="flex items-center justify-between gap-2.5">
                                 <p>Total products</p>
-                                <p>3</p>
+                                <p>{totalProducts}</p>
                             </li>
                             <li className="flex items-center justify-between gap-2.5">
-                                <p>Total quantity</p>
+                                <p>{totalQuantity}</p>
                                 <p>5</p>
                             </li>
                             <li className="flex items-center justify-between gap-2.5 text-darkSlate font-bold">
                                 <p>Total amount</p>
-                                <p>$148.23</p>
+                                <p>${totalAmount}</p>
                             </li>
                         </ul>
                     </div>
