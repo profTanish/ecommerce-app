@@ -29,7 +29,7 @@ const Homepage = () => {
           </div>
         </div>
         <div>
-          <img src="/hero-min.jpg" alt="hero" />
+          <img loading="lazy" src="/hero-min.jpg" alt="hero" />
         </div>
       </section>
 
@@ -37,7 +37,7 @@ const Homepage = () => {
         <h4 className="heading-quaternary ">Get Introduced</h4>
         <div className="max-w-5xl mx-auto text-6xl font-thin leading-[80px] text-darkSlate">
           Shop confidently with
-          <a className="bg-[url(/bike.jpg)] image-mini"></a>
+          <a className="bg-[url(bike.jpg)] image-mini"></a>
           our online store, where we prioritize saving your time, easing{" "}
           <a className="bg-[url(/sofa.jpeg)] image-mini"></a> your stress, and
           ensuring you get the best value for your money.
@@ -77,6 +77,7 @@ const Homepage = () => {
         </div>
         <div className="w-1/2 pl-8">
           <img
+            loading="lazy"
             src="/person-buying-online.jpg"
             alt="Shopping Experience"
             className="w-full h-auto rounded-lg"

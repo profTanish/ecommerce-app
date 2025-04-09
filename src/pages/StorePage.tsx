@@ -8,9 +8,9 @@ const StorePage = () => {
         <div>
             <div className="overflow-hidden relative h-[25rem]">
                 <img
+                    loading="lazy"
                     className="object-cover h-full w-full"
                     src="store-hero.jpg"
-                    loading="lazy"
                     alt="Luxury Living Room"
                 />
                 <h1 className="text-9xl tracking-wider font-bold text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

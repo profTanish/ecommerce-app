@@ -5,7 +5,7 @@ import CountUp from "react-countup";
 
 const About = () => {
     return (
-        <div  className="max-w-container mx-auto">
+        <div className="max-w-container mx-auto">
             <section className="py-16 flex flex-col items-center gap-8">
                 <h1 className="heading-primary max-w-3xl text-center">
                     Start shopping from the best store on the web
@@ -19,7 +19,7 @@ const About = () => {
                         <HiArrowLongDown />
                     </span>
                 </Button>
-                <img src="image-group.jpg" alt="About hero" />
+                <img loading="lazy" src="image-group.jpg" alt="About hero" />
             </section>
 
             <section
@@ -28,6 +28,7 @@ const About = () => {
             >
                 <div className="overflow-hidden rounded-lg">
                     <img
+                        loading="lazy"
                         className="w-full max-h-[600px] object-cover transition-all duration-500 hover:scale-110"
                         src="/team.jpg"
                         alt="Group of people"
