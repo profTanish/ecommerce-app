@@ -18,8 +18,13 @@ type LoginProps = {
 };
 
 type updateUserProps = {
-  password?: string;
-  fullName?: string;
+  password?: string | undefined;
+  name?: string | undefined;
+  address?: {
+    phone?: string | undefined;
+    city?: string | undefined;
+    street?: string | undefined;
+  };
 };
 
 export async function signup({ name, email, password, address }: SignupProps) {
@@ -67,10 +72,11 @@ export async function logout() {
   if (error) throw new Error(error.message);
 }
 
-export async function updateUser({ password, fullName }: updateUserProps) {
+export async function updateUser({ password, name, address }: updateUserProps) {
   let updateValue: Partial<UserAttributes> = {};
   if (password) updateValue.password = password;
-  if (fullName) updateValue.data = { fullName };
+  if (name) updateValue.data = { name };
+  if (address) updateValue.data = { address };
 
   const { data, error } = await supabase.auth.updateUser(updateValue);
 
