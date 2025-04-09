@@ -20,16 +20,16 @@ export const signupValidation = z.object({
     password: z
         .string()
         .min(8, { message: "Passwords must be at least 8 characters." }),
-        address: addressSchema,
+    address: addressSchema,
 });
 
-// Order
-export const orderValidation = z.object({
-    fullName: z.string().min(2, {
-        message: "Name must be at least 2 characters.",
-    }),
-    email: z.string().email(),
-    address: addressSchema,
+export const userUpdateValidation = z.object({
+    name: z
+        .string()
+        .min(2, { message: "Name must be at least 2 characters." })
+        .optional(),
+    email: z.string().email().optional(),
+    address: addressSchema.partial(),
 });
 
 export const passwordValidation = z
