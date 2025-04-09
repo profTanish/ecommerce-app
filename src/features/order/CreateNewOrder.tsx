@@ -48,11 +48,11 @@ const CreateNewOrder = () => {
                         createOrder(
                             { ...newOrder, customerId: newCustomer.id },
                             {
-                              onSuccess: (createdOrder) => {
-                                navigate(`/order/${createdOrder.id}`);
-                              },
+                                onSuccess: (createdOrder) => {
+                                    navigate(`/order/${createdOrder.id}`);
+                                },
                             }
-                          );
+                        );
                     },
                 }
             );
@@ -60,19 +60,21 @@ const CreateNewOrder = () => {
             createOrder(
                 { ...newOrder, customerId: customer.id },
                 {
-                  onSuccess: (createdOrder) => {
-                    navigate(`/order/${createdOrder.id}`);
-                  },
+                    onSuccess: (createdOrder) => {
+                        navigate(`/order/${createdOrder.id}`);
+                    },
                 }
-              );
+            );
         }
     }
 
     return (
         <div className="max-w-container mx-auto py-16">
             <h2 className="heading-secondary mb-5">Confirm your order</h2>
-            <AddressInfo address={address} name={name} email={email} />
-            <OrderSummary cart={cart} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <OrderSummary />
+                <AddressInfo address={address} name={name} email={email} />
+            </div>
             <Button
                 disabled={isCreatingOrder || isCreatingCustomer}
                 onClick={handleCreateOrder}
