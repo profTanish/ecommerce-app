@@ -6,13 +6,13 @@ import {
     HiOutlineUser,
 } from "react-icons/hi2";
 
-import Spinner from "@/components/Spinner";
 import { Button } from "@/components/ui/button";
 import { useGetOrderById } from "./useGetOrderById";
 import { getEstimatedDeliveryDate } from "@/lib/helpers";
 import { useGetCustomer } from "../customer/useGetCustomer";
 import { useUser } from "../authentication/useUser";
 import { Link, useNavigate } from "react-router-dom";
+import FullPageSpinner from "@/components/FullPageSpinner";
 
 const Order = () => {
     const navigate = useNavigate();
@@ -30,8 +30,9 @@ const Order = () => {
         }
     }, [customer, order, history]);
 
-    if (isLoading) return <Spinner />;
-    if (!order || !customer) return <div>No order could be found.</div>;
+    if (isLoading) return <FullPageSpinner />;
+    if (!order || !customer)
+        return <div className="py-5">No order/customer could be found.</div>;
 
     const { fullName, email, address } = customer;
 
