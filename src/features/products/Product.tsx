@@ -18,7 +18,7 @@ const Product = ({ product }: ProductType) => {
   const isItemInCart = curQuantity > 0;
 
   return (
-    <div>
+    <div  className="flex flex-col">
       <Link to={`${category}/${id}`}>
         <div className="rounded-lg overflow-hidden relative">
           <img loading="lazy" src={images?.at(0)} alt="product" />
@@ -26,13 +26,13 @@ const Product = ({ product }: ProductType) => {
             {capitalizeFirstLetter(category)}
           </p>
         </div>
-        <div className="space-y-2.5 mt-2.5">
+        <div className="space-y-2.5 my-2.5">
           <h5 className="font-medium text-darkSlate">{name}</h5>
           <p className="font-bold text-darkSlate text-2xl">${price}</p>
         </div>
       </Link>
 
-      <div className="flex gap-2.5 mt-2.5 justify-between items-center">
+      <div className="flex gap-2.5 mt-auto justify-between items-center">
         {isItemInCart ? (
           <>
             <EditCartItemQty productId={id} quantity={curQuantity} />

@@ -8,6 +8,7 @@ import DeleteCartItem from "../cart/DeleteCartItem";
 import { Button } from "@/components/ui/button";
 import AddItemToCart from "../cart/AddItemToCart";
 import EditCartItemQty from "../cart/EditCartItemQty";
+import { capitalizeFirstLetter } from "@/lib/helpers";
 
 const ProductDetails = () => {
     const { isLoading, product } = useProduct();
@@ -23,6 +24,8 @@ const ProductDetails = () => {
 
     const { id, images, description, category, name, price, sku } = product;
 
+    const capitalizedCategoryName = capitalizeFirstLetter(category);
+
     const isItemInCart = curQuantity > 0;
 
     return (
@@ -30,7 +33,10 @@ const ProductDetails = () => {
             <Broadcrumb
                 items={[
                     { name: "Store", link: "/store" },
-                    { name: category, link: "/store/clothes" },
+                    {
+                        name: capitalizedCategoryName,
+                        link: `/store?category=${category}`,
+                    },
                     { name },
                 ]}
             />
