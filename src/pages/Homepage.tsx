@@ -43,8 +43,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      <section className="flex items-center justify-between mx-auto py-16">
-        <div className="w-1/2 pr-8">
+      <section className="grid lg:grid-cols-2 items-center gap-10 mx-auto py-16">
+        <div>
           <h4 className="heading-quaternary mb-5">What We Offer</h4>
           <h2 className="heading-secondary text-darkSlate mb-6">
             Experience Unmatched Shopping Convenience
@@ -74,7 +74,7 @@ const Homepage = () => {
             />
           </div>
         </div>
-        <div className="w-1/2 pl-8">
+        <div>
           <img
             loading="lazy"
             src="/person-buying-online.jpg"

@@ -86,7 +86,7 @@
   }
 
   .heading-secondary {
-    @apply text-5xl font-bold text-darkSlate;
+    @apply text-4xl xs:text-5xl font-bold text-darkSlate;
   }
 
   .heading-tertiary {
