@@ -9,8 +9,8 @@ import CtaSection from "../components/CtaSection";
 
 const Homepage = () => {
   return (
-    <div className="max-w-container mx-auto">
-      <section className="grid md:grid-cols-2 items-center justify-between gap-16 pb-16">
+    <div className="max-w-container mx-auto px-5">
+      <section className="grid lg:grid-cols-2 items-center justify-between gap-16 pb-16">
         <div className="max-w-screen-sm space-y-5">
           <h1 className="heading-primary">
             Bring your shopping to the next{" "}
@@ -19,8 +19,7 @@ const Homepage = () => {
           <p className="max-w-[80%]">
             Lorem ipsum dolor sit amet consectetur. Non egestas id proin aliquam
             pellentesque congue. Vel consectetur turpis a aliquam. Nisi maecenas
-            elementum interdum arcu nunc ullamcorper pharetra suspendisse.
-            Scelerisque dolor magna dolor libero iaculis.
+            elementum interdum arcu.
           </p>
           <div className="max-w-52">
             <Button >

@@ -60,6 +60,9 @@ module.exports = {
            foreground: "hsl(var(--card-foreground))",
          },
             },
+            screens: {
+              xs: "400px",
+            },
             maxWidth: {
                 container: "82.5rem",
             },

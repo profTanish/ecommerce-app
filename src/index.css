@@ -82,7 +82,7 @@
 
 @layer components {
   .heading-primary {
-    @apply text-6xl font-black text-darkSlate;
+    @apply text4xl xs:text-5xl lg:text-6xl font-black text-darkSlate;
   }
 
   .heading-secondary {
