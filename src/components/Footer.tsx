@@ -4,9 +4,9 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <footer className=" bg-darkSlate text-white">
-      <div className="max-w-container mx-auto flex flex-wrap items-end justify-between px-5 py-16 xl:px-0">
-        <div className="flex gap-16">
+    <footer className="bg-darkSlate text-white px-5">
+      <div className="max-w-container mx-auto flex flex-wrap items-end justify-between py-16">
+        <div className="grid sm:grid-cols-3 sm:gap-24">
         <div className="space-y-2.5">
              <Logo isDark={true} />
              <p className="w-36 text-stone-400">All about online shopping</p>

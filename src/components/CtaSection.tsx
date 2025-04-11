@@ -3,7 +3,7 @@ import Button from "./Button";
  const CtaSection = () => {
    return (
      <section className="py-16">
-       <div className="flex justify-between items-center">
+       <div className="flex flex-col gap-6 lg:flex-row justify-between lg:items-center">
          <div className="max-w-3xl space-y-5">
            <h1 className="heading-secondary">Ready To Explore Online World?</h1>
            <p>
