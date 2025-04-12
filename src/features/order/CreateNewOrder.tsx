@@ -69,7 +69,7 @@ const CreateNewOrder = () => {
     }
 
     return (
-        <div className="max-w-container mx-auto py-16">
+        <div className="max-w-container mx-auto py-16 min-h-[60vh]">
             <h2 className="heading-secondary mb-5">Confirm your order</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 <OrderSummary />
