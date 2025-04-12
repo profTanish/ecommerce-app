@@ -18,7 +18,7 @@ const Product = ({ product }: ProductType) => {
   const isItemInCart = curQuantity > 0;
 
   return (
-    <div  className="flex flex-col">
+    <div  className="flex flex-col h-full">
       <Link to={`${category}/${id}`}>
         <div className="rounded-lg overflow-hidden relative">
           <img loading="lazy" src={images?.at(0)} alt="product" />
