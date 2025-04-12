@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import AddItemToCart from "../cart/AddItemToCart";
 import EditCartItemQty from "../cart/EditCartItemQty";
 import { capitalizeFirstLetter } from "@/lib/helpers";
+import FullPageSpinner from "@/components/FullPageSpinner";
 
 const ProductDetails = () => {
     const { isLoading, product } = useProduct();
@@ -20,6 +21,7 @@ const ProductDetails = () => {
         getCurrentQuantityById(product ? product.id : 0)
     );
 
+    if (isLoading) return <FullPageSpinner />;
     if (!product) return null;
 
     const { id, images, description, category, name, price, sku } = product;
