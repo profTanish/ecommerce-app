@@ -5,9 +5,9 @@ import CountUp from "react-countup";
 
 const About = () => {
     return (
-        <div className="max-w-container mx-auto">
+        <div className="max-w-container mx-auto px-5">
             <section className="py-16 flex flex-col items-center gap-8">
-                <h1 className="heading-primary max-w-3xl text-center">
+                <h1 className="heading-primary  max-w-3xl text-center">
                     Start shopping from the best store on the web
                 </h1>
                 <p className="max-w-xl text-center">
@@ -19,14 +19,19 @@ const About = () => {
                         <HiArrowLongDown />
                     </span>
                 </Button>
-                <img loading="lazy" src="image-group.jpg" alt="About hero" />
+                <img
+                    className="hidden xs:block"
+                    loading="lazy"
+                    src="image-group.jpg"
+                    alt="About hero"
+                />
             </section>
 
             <section
-                className="py-16 grid grid-cols-1 md:grid-cols-2 gap-16"
+                className="py-16 grid grid-cols-1 lg:grid-cols-2 gap-16"
                 id="section-numbers"
             >
-                <div className="overflow-hidden rounded-lg">
+                <div className="overflow-hidden rounded-lg order-2 lg:order-1">
                     <img
                         loading="lazy"
                         className="w-full max-h-[600px] object-cover transition-all duration-500 hover:scale-110"
@@ -34,7 +39,7 @@ const About = () => {
                         alt="Group of people"
                     />
                 </div>
-                <div className="space-y-5 mt-8">
+                <div className="space-y-5 mt-8 order-1 lg:order-2">
                     <h2 className="heading-secondary">Numbers Say It All</h2>
                     <p>
                         Discover why our customers trust us and why we're a leading name in
