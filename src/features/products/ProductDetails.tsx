@@ -1,13 +1,15 @@
-import Broadcrumb from "../../components/Breadcrumb";
-import { useProduct } from "./useProduct";
-import ProductCarousel from "@/components/ProductCarousel";
-import { useRelatedProducts } from "./useRelatedProducts";
 import { useSelector } from "react-redux";
+import { capitalizeFirstLetter } from "@/lib/helpers";
+
+import { useProduct } from "./useProduct";
+import { useRelatedProducts } from "./useRelatedProducts";
 import { getCurrentQuantityById } from "../cart/cartSlice";
+
+import Broadcrumb from "../../components/Breadcrumb";
+import ProductCarousel from "@/components/ProductCarousel";
 import DeleteCartItem from "../cart/DeleteCartItem";
 import AddItemToCart from "../cart/AddItemToCart";
 import EditCartItemQty from "../cart/EditCartItemQty";
-import { capitalizeFirstLetter } from "@/lib/helpers";
 import FullPageSpinner from "@/components/FullPageSpinner";
 import BuyNowButton from "@/components/BuyNowButton";
 
@@ -54,7 +56,7 @@ const ProductDetails = () => {
                     <h3 className="heading-secondary py-2.5">{name}</h3>
                     <div className="px-2.5 py-1 bg-green-200 max-w-fit rounded-sm">
                         <h4 className="text-sm font-semibold tracking-wider text-green-600">
-                            In Stock
+                            In stock
                         </h4>
                     </div>
                     <h2 className="heading-secondary py-8">${price}</h2>
