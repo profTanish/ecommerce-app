@@ -5,11 +5,11 @@ import { useRelatedProducts } from "./useRelatedProducts";
 import { useSelector } from "react-redux";
 import { getCurrentQuantityById } from "../cart/cartSlice";
 import DeleteCartItem from "../cart/DeleteCartItem";
-import { Button } from "@/components/ui/button";
 import AddItemToCart from "../cart/AddItemToCart";
 import EditCartItemQty from "../cart/EditCartItemQty";
 import { capitalizeFirstLetter } from "@/lib/helpers";
 import FullPageSpinner from "@/components/FullPageSpinner";
+import BuyNowButton from "@/components/BuyNowButton";
 
 const ProductDetails = () => {
     const { isLoading, product } = useProduct();
@@ -76,7 +76,7 @@ const ProductDetails = () => {
                                 <AddItemToCart product={product} />
 
 
-                                <Button className="w-full">Buy Now</Button>
+                                <BuyNowButton product={product} />
                             </>
                         )}
                     </div>
