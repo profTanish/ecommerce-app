@@ -1,8 +1,9 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 
 import {
+    clearCart,
     getCart,
     getTotalCartPrice,
     getTotalCartProducts,
@@ -16,13 +17,17 @@ import { useCreateCustomer } from "../customer/useCreateCustomer";
 
 import OrderSummary from "./OrderSummary";
 import AddressInfo from "./AddressInfo";
+import { AppDispatch } from "@/store";
 
 const CreateNewOrder = () => {
     const navigate = useNavigate();
     const { createOrder, isCreatingOrder } = useCreateOrder();
+    const { user } = useUser();
     const { customer } = useGetCustomer(user?.email);
     const { createNewCustomer, isCreatingCustomer } = useCreateCustomer();
 
+    const cart = useSelector(getCart);
+    const dispatch = useDispatch<AppDispatch>();
     const totalCartPrice = useSelector(getTotalCartPrice);
     const totalCartQuantity = useSelector(getTotalCartQuantity);
     const totalCartProducts = useSelector(getTotalCartProducts);
@@ -50,6 +55,7 @@ const CreateNewOrder = () => {
                             {
                                 onSuccess: (createdOrder) => {
                                     navigate(`/order/${createdOrder.id}`);
+                                    dispatch(clearCart());
                                 },
                             }
                         );
@@ -62,6 +68,7 @@ const CreateNewOrder = () => {
                 {
                     onSuccess: (createdOrder) => {
                         navigate(`/order/${createdOrder.id}`);
+                        dispatch(clearCart());
                     },
                 }
             );
