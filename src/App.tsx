@@ -18,6 +18,7 @@ import Order from "./features/order/Order.tsx";
 import Account from "./features/authentication/Account.tsx";
 import AccountGeneral from "./features/authentication/AccountGeneral.tsx";
 import AccountPassword from "./features/authentication/AccountGeneral.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ const App = () => {
       <ReactQueryDevtools initialIsOpen={false} />
 
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="home" />} />
