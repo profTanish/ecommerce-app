@@ -19,8 +19,8 @@ const StorePage = () => {
             </div>
 
             <div className="max-w-container mx-auto">
-                <div className="py-16 grid grid-cols-[1fr_3fr]">
-                    <div className="flex flex-col gap-8">
+                <div className="px-5 py-16 grid md:grid-cols-[1fr_3fr] gap-5 lg:gap-0">
+                    <div className="flex flex-col gap-4 md:gap--8">
                         <div className="sort-container">
                             <h3 className="heading-tertiary mb-2.5">Sort By</h3>
                             <SortBy
@@ -48,11 +48,11 @@ const StorePage = () => {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <h3 className="heading-tertiary mb-2.5">Price</h3>
                             <p className="mb-2.5">$44</p>
                             <input type="range" min="0" max="99999" step="5" />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div>

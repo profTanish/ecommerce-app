@@ -6,7 +6,6 @@ import SkeletonProducts from "@/components/SkeletonProducts";
 const Products = () => {
     const { isLoading, products, count } = useProducts();
 
-    // if (isLoading) return <Spinner />;
     if (isLoading) return <SkeletonProducts count={8} />;
 
     if (!products?.length)
@@ -14,7 +13,7 @@ const Products = () => {
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid xsBreak:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {products?.map((product) => (
                     <Product key={product.id} product={product} />
                 ))}

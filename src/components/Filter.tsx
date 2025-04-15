@@ -17,7 +17,7 @@ const Filter = ({ filterField, options }: FilterProps) => {
     }
 
     return (
-        <div className="flex flex-col gap-2.5 items-start">
+        <div className="flex md:flex-col gap-2.5 items-start">
             {options.map((option) => (
                 <button
                     className={`hover:text-darkSlate ${option.value === curFilter ? "text-darkSlate" : "text-textGray"

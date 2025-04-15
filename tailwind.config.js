@@ -62,6 +62,7 @@ module.exports = {
             },
             screens: {
               xs: "400px",
+              xsBreak: "458px",
             },
             maxWidth: {
                 container: "82.5rem",
