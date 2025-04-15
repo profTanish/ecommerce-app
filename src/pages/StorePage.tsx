@@ -60,7 +60,7 @@ const StorePage = () => {
                     </div>
                 </div>
 
-                <section className="py-16 space-y-5">
+                <section className="px-5 py-16 space-y-5">
                     <h2 className="heading-secondary">Explore Our Recommendations</h2>
                     <RecommendedProducts />
                 </section>

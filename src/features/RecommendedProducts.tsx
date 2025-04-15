@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
    const { isLoading, recommendedProducts } = useRecommendedProducts();
  
    return (
-     <div className="grid grid-cols-3 gap-10">
+     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
        {isLoading && <Spinner />}
        {recommendedProducts?.map((product) => (
          <Product key={product.id} product={product} />
