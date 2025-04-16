@@ -10,7 +10,7 @@ const StorePage = () => {
                 <img
                     loading="lazy"
                     className="object-cover h-full w-full"
-                    src="store-hero.jpg"
+                    src="/store-hero.jpg"
                     alt="Luxury Living Room"
                 />
                 <h1 className="text-5xl xs:text-7xl md:text-9xl tracking-wider font-bold text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

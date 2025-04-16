@@ -5,7 +5,7 @@ type LogoProps = {
 };
 
 const Logo = ({ isDark = false }: LogoProps) => {
-    const src = isDark ? "./logo-dark.svg" : "/logo-light.svg";
+    const src = isDark ? "/logo-dark.svg" : "/logo-light.svg";
 
 return (
     <Link className="my-auto h-9" to="/">

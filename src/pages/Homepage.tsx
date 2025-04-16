@@ -6,6 +6,7 @@ import {
 import Feature from "../components/Feature";
 import Button from "../components/Button";
 import CtaSection from "../components/CtaSection";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -22,8 +23,10 @@ const Homepage = () => {
             elementum interdum arcu.
           </p>
           <div className="max-w-52">
-            <Button >
-              <span className="relative z-10">Start Exploring</span>
+          <Button href="/store">
+               <span className="relative z-10">
+                 <Link to="/store">Start Exploring</Link>
+               </span>
             </Button>
           </div>
         </div>
@@ -36,7 +39,7 @@ const Homepage = () => {
         <h4 className="heading-quaternary mb-5">Get Introduced</h4>
         <div className="max-w-5xl mx-auto text-4xl sm:5xl lg:text-6xl font-thin leading-[50px] sm:leading-[60px] lg:leading-[80px] text-darkSlate">
           Shop confidently with
-          <a className="bg-[url(bike.jpg)] image-mini"></a>
+          <a className="bg-[url(/bike.jpg)] image-mini"></a>
           our online store, where we prioritize saving your time, easing{" "}
           <a className="bg-[url(/sofa.jpeg)] image-mini"></a> your stress, and
           ensuring you get the best value for your money.

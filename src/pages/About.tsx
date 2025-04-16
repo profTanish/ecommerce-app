@@ -22,7 +22,7 @@ const About = () => {
                 <img
                     className="hidden xs:block"
                     loading="lazy"
-                    src="image-group.jpg"
+                    src="/image-group.jpg"
                     alt="About hero"
                 />
             </section>
